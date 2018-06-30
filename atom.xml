@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>陈浩然的博客</title>
   
-  <subtitle>计算机与经济的小屋，陈浩然♡张芷若</subtitle>
+  <subtitle>计算机与经济的小屋&lt;br&gt;陈浩然♡张芷若</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://braveryCHR.github.io/"/>
