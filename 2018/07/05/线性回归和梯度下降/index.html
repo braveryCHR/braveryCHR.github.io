@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器学习,线性回归,梯度下降," />
 
 
 
@@ -95,17 +95,23 @@
 
 
 
-<meta name="description" content="我所受过的苦，终将照亮我前进的路">
-<meta name="keywords" content="计算机,编程,经济学">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陈浩然的博客">
-<meta property="og:url" content="https://braveryCHR.github.io/index.html">
+<meta name="description" content="在上一章我们说到，机器学习中主要的两个任务就是回归和分类。如果读者有高中数学基础，我们很容易回忆到我们高中学习过的一种回归方法——线性回归。我们将这种方法泛化，就可以得到机器学习中的一种常见模型——线性模型，线性模型是监督学习的一种。我们已经说过，我们要从数据集中训练出模型，每个数据可以视为（属性，标签）二元组。其中属性可以为属性向量。假设给定具有n个属性的属性向量的数据 $\vec x = (x">
+<meta name="keywords" content="机器学习,线性回归,梯度下降">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性回归和梯度下降">
+<meta property="og:url" content="https://braveryCHR.github.io/2018/07/05/线性回归和梯度下降/index.html">
 <meta property="og:site_name" content="陈浩然的博客">
-<meta property="og:description" content="我所受过的苦，终将照亮我前进的路">
+<meta property="og:description" content="在上一章我们说到，机器学习中主要的两个任务就是回归和分类。如果读者有高中数学基础，我们很容易回忆到我们高中学习过的一种回归方法——线性回归。我们将这种方法泛化，就可以得到机器学习中的一种常见模型——线性模型，线性模型是监督学习的一种。我们已经说过，我们要从数据集中训练出模型，每个数据可以视为（属性，标签）二元组。其中属性可以为属性向量。假设给定具有n个属性的属性向量的数据 $\vec x = (x">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://braverychr.github.io/2018/07/05/线性回归和梯度下降/2018-7-5-1.jpg">
+<meta property="og:image" content="https://braverychr.github.io/2018/07/05/线性回归和梯度下降/2018-7-5-2.jpg">
+<meta property="og:image" content="https://braverychr.github.io/2018/07/05/线性回归和梯度下降/2018-7-5-3.jpg">
+<meta property="og:image" content="https://braverychr.github.io/2018/07/05/线性回归和梯度下降/2018-7-5-4.jpg">
+<meta property="og:updated_time" content="2018-07-05T11:31:46.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陈浩然的博客">
-<meta name="twitter:description" content="我所受过的苦，终将照亮我前进的路">
+<meta name="twitter:title" content="线性回归和梯度下降">
+<meta name="twitter:description" content="在上一章我们说到，机器学习中主要的两个任务就是回归和分类。如果读者有高中数学基础，我们很容易回忆到我们高中学习过的一种回归方法——线性回归。我们将这种方法泛化，就可以得到机器学习中的一种常见模型——线性模型，线性模型是监督学习的一种。我们已经说过，我们要从数据集中训练出模型，每个数据可以视为（属性，标签）二元组。其中属性可以为属性向量。假设给定具有n个属性的属性向量的数据 $\vec x = (x">
+<meta name="twitter:image" content="https://braverychr.github.io/2018/07/05/线性回归和梯度下降/2018-7-5-1.jpg">
 
 
 
@@ -135,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="https://braveryCHR.github.io/"/>
+  <link rel="canonical" href="https://braveryCHR.github.io/2018/07/05/线性回归和梯度下降/"/>
 
 
 
 
 
-  <title>陈浩然的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>线性回归和梯度下降 | 陈浩然的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -160,8 +166,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
-  page-home">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -298,9 +303,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -330,9 +335,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/05/线性回归和梯度下降/" itemprop="url">线性回归和梯度下降</a></h1>
+          <h1 class="post-title" itemprop="name headline">线性回归和梯度下降</h1>
         
 
         <div class="post-meta">
@@ -435,18 +438,44 @@
       
 
       
-        
-          
-          在上一章我们说到，机器学习中主要的两个任务就是回归和分类。如果读者有高中数学基础，我们很容易回忆到我们高中学习过的一种回归方法——线性回归。我们将这种方法泛化，就可以得到机器学习中的一种常见模型——线性模型，线性模型是监督学习的一种。我们已经说过，我们要从数据集中训练出模型，每个数据可以视为（属性，标签）二元组。其中属性可以为属性向量。假设给定具有n个属性的属性向量的数据 $\vec x = (x
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/05/线性回归和梯度下降/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p>在上一章我们说到，机器学习中主要的两个任务就是回归和分类。如果读者有高中数学基础，我们很容易回忆到我们高中学习过的一种回归方法——<strong>线性回归</strong>。我们将这种方法泛化，就可以得到机器学习中的一种常见模型——<strong>线性模型</strong>，线性模型是<strong>监督学习的一种</strong>。<br>我们已经说过，我们要从数据集中训练出模型，每个数据可以视为<strong>（属性，标签）</strong>二元组。其中属性可以为属性向量。<br>假设给定具有n个属性的属性向量的数据 $\vec x = (x_1,x_2,x_3 \dots x_n)$，我们利用属性的线性组合来进行预测，即<br>$$f(x) = w_1x_1+w_2x_2+w_3x_3+ \dots + w_nx_n + b$$<br>我们可以将其写成向量形式<br>$$ f(x) = w^Tx+b$$<br>其中$w=(w_1,w_2,w_3 \dots w_n)$，w和b就是该模型中我们要求的参数，确定w和b，该模型就得以确定。<br>我们将这样的模型称为线性模型，不得不提的是，线性模型并不是只能进行线性分类，它具有很强的泛化能力，我们后面会提到。</p>
+<h3 id="属性转换"><a href="#属性转换" class="headerlink" title="属性转换"></a>属性转换</h3><p>在进行建模之前，我们要先对数据集进行处理，使得其适合进行建模。<br>我们注意到，在线性模型中，属性值都是<strong>实数</strong>，那么会出现以下两种需要进行转化的情况</p>
+<ul>
+<li><strong>属性离散，但是有序关系（可以比较）</strong>。例如身材的过轻，正常，肥胖，过于肥胖，可以被编码为-1,0,1,2，从而转化为实数进行处理。</li>
+<li><strong>属性离散，但是无序关系（不可比较）</strong>。例如国籍的中国人，美国人，日本人。我们可以将取值有k种的值转化为k维向量，如上例，可以编码为 $(1,0,0),(0,1,0),(0,0,1)$。</li>
+</ul>
+<h3 id="单变量线性回归"><a href="#单变量线性回归" class="headerlink" title="单变量线性回归"></a>单变量线性回归</h3><p>如果 $x = (x_1,x_2,x_3 \dots x_n)$中n= 1，此时x为一个实数，线性回归模型就退化为单变量线性回归。我们将模型记为<br>$$f(x)=w x + b$$<br>其中w,x,b都是实数,相信这个模型大家在高中都学习过。在这里我们有两种方法求解这个模型，分别是<strong>最小二乘法</strong>和<strong>梯度下降法</strong>。<br>我们先定义符号，$x_i$ 代表第i个数据的属性值，$y_i$是第i个数据的标签值（即真值），f是我们学习到的模型，$f(x_i)$即我们对第i个数据的预测值。<br>我们的目标是，求得适当的w和b，使得S最小，其中S是预测值和真值的差距平方和，亦称为<strong>代价函数</strong>，当然代价函数还有很多其他的形式。<br>$$minS = \frac {1} {2n} \sum_{i=1}^{n} {(f(x_i)-y_i)^2}$$<br>其中的$\frac1n$只是将代价函数值归一化的系数。</p>
+<h4 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h4><p>最小二乘法不是我们在这里要讨论的重点，但也是在很多地方会使用到的重要方法。<br>最小二乘法使用参数估计，将S看做一个关于w和b的函数，分别对w和b求偏导数，使得偏导数为0，由微积分知识知道，在此次可以取得S的最小值。由这两个方程即可求得w和b的值。（此处省略过程）<br>求得<br>$$w = \frac {\sum_{i=1}^{n} {y_i(x_i-\overline x)}} {\sum_{i=1}^{n} {x_i^2} -\frac 1m(\sum_{i=1}^{n} {x_i})^2 }$$<br>$$b = \overline y -b \overline x$$<br>其中$\overline y，\overline x$分别是y和x的均值</p>
+<h4 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><p>我们刚刚利用了方程的方法求得了单变量线性回归的模型。但是对于几百万，上亿的数据，这种方法太慢了，这时，我们可以使用<strong>凸优化</strong>中最常见的方法之一——<strong>梯度下降法</strong>，来更加迅速的求得使得S最小的w和b的值。<br>S可以看做w和b的函数 $S(w，b)$，这是一个双变量的函数，我们用matlab画出他的函数图像，可以看出这是一个明显的凸函数。<br><img src="/2018/07/05/线性回归和梯度下降/2018-7-5-1.jpg" alt="参考图片"><br>梯度下降法的相当于<strong>我们下山的过程</strong>，每次我们要走一步下山，寻找最低的地方，那么最可靠的方法便是环顾四周，寻找能一步到达的最低点，持续该过程，最后得到的便是最低点。<br>对于函数而言，便是求得该函数对所有参数（变量）的偏导，每次更新这些参数，直到到达最低点为止，注意这些参数必须在每一轮一起更新，而不是一个一个更新。<br>过程如下：<br>$$给w、b随机赋初值,一般可以都设为0$$<br>$$w_{new} = w - a\frac {\partial S(w,b)}{\partial w}，b_{new} = b - a\frac {\partial S(w,b)}{\partial b}$$<br>$$w = w_{new},b = b_{new}$$<br>带入真正的表达式，即为<br>$$w_0 = w_0 - a \frac1m  \sum_{i=1}^{n} {(f(x_i)-y_i)},w_0是常数项$$<br>$$w_j = w_j - a \frac1m  \sum_{j=1}^{n} {(f(x_i)-y_i)x_i},j\in{1,2,3\cdots n}$$<br>其中a为学习率，是一个实数。整个过程形象表示便是如下图所示，一步一步走，最后达到最低点。<br><img src="/2018/07/05/线性回归和梯度下降/2018-7-5-2.jpg" alt="参考图片"><br>需要说明以下几点：</p>
+<ul>
+<li>a为学习率，学习率决定了学习的速度。<ul>
+<li>如果a过小，那么学习的时间就会很长，导致算法的低效，不如直接使用最小二乘法。</li>
+<li>如果a过大，那么由于每一步更新过大，可能无法收敛到最低点。由于越偏离最低点函数的导数越大，如果a过大，某一次更新直接跨越了最低点，来到了比更新之前<strong>更高</strong>的地方。那么下一步更新步会更大，如此反复震荡，离最佳点越来越远。以上两种情况如下图所示<br><img src="/2018/07/05/线性回归和梯度下降/2018-7-5-3.jpg" alt="参考图片"></li>
+</ul>
+</li>
+<li>我们的算法不一定能达到最优解。如上图爬山模型可知，如果我们初始位置发生变化，那么可能会到达不同的极小值点。但是由于线性回归模型中的函数都是<a href="https://baike.baidu.com/item/%E5%87%B8%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">凸函数</a>,所以利用梯度下降法，是可以找到全局最优解的，在这里不详细阐述。</li>
+</ul>
+<h3 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h3><p>如果数据中属性是一个多维向量， $\vec x = (x_1,x_2,x_3 \dots x_n)$,那么该回归模型称为多变量线性回归。也就是一般意义上的线性回归模型。<br>我们先定义符号，$\vec x_i$ 代表第i个数据的属性值，它是一个向量，$x_i^j$表示第i个数据的第j个属性，它是一个实数，$y_i$是第i个数据的标签值，也是实数。f是我们学习到的模型，$f(\vec x_i)$即我们对第i个数据的预测值。<br>我们建立的模型为：<br>$$f(\vec x_i) = \vec w^T \cdot \vec x + b$$<br>我们的目标是，求得适当的 $\vec w$和b，使得S最小，其中S是预测值和真值的差距平方和，亦称为<strong>代价函数</strong>，当然代价函数还有很多其他的形式。<br>$$minS = \frac {1} {2n} \sum_{i=1}^{n} {(f(\vec x_i)-y_i)^2}$$<br>其中的$\frac1n$只是将代价函数值归一化的系数。</p>
+<h4 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h4><p>由于$\vec x$具有很多维的特征，每一维的特征大小可能相差甚多，这样会大大影响学习的速度。假如房价范围0-10000000，房子大小范围1-200，那么这两个特征学习到的系数大小会差很多倍，而学习率必须按照最小的系数来进行设定，则大系数的收敛会非常慢。<br>为了避免这种情况，我们使用了特征缩放将每个特征的值进行处理，使之在[-1,1]之间，当然，原本范围就于此在一个数量级的特征，也可以不进行处理。处理公式如下：<br>$$x_i = \frac {x_i-\overline x} {x_{max}-x_{min}}$$<br>或者<br>$$x_i = \frac {x_i-\overline x} {\sigma}$$<br>其中$\sigma$为数据标准差。</p>
+<h4 id="正规方程法"><a href="#正规方程法" class="headerlink" title="正规方程法"></a>正规方程法</h4><p>对于多元线性回归而言，正规方程法是一种准确的方法，就像最小二乘法对于单变量线性回归一样。<br>为了使形式更加简化，我们做以下符号设定：<br>$$<br>\vec X =<br> \left[<br> \begin{matrix}<br>  1 &amp; x_1^1 &amp; x_1^2 &amp; x_1^3 \dots &amp; x_1^n  \<br>  1 &amp;x_2^1 &amp; x_2^2 &amp; x_2^3 \dots &amp; x_2^n  \<br>  \cdots&amp; \cdots&amp; \cdots &amp; \cdots \<br>  1 &amp;x_n^1 &amp; x_n^2 &amp; x_n^3 \dots &amp; x_n^n  \<br>  \end{matrix}<br>  \right] \tag{3}<br>$$<br>由此，我们可以将S写成另一种形式，记为$S^<em>$，定义如下：<br>$$S^</em> = (\vec y -\vec X \cdot \vec w)^T(\vec y -\vec X \cdot \vec w)$$<br>请注意，$S^<em>$和S的区别仅仅在于它没有$\frac 1n$的系数，而该系数是一个定值，故最小化的目标和过程是一样的，我们在此要将$S^</em>$最小化。<br>同理，我们将$S^<em>$视为$\vec w$的函数，对于$\vec w$求导数，得到取得最小值时的$\vec w$的值，便是我们得到的结果，记为$\vec w^</em>$<br>$$\vec w^* =(\vec X^T \vec X)^{-1}\vec X^T\vec y$$<br>该方法得到了为准确值，即在我们给定条件下的最优解，但是该方法有两个弊端：</p>
+<ul>
+<li>需要计算$(\vec X^T \vec X)^{-1}$，相对于矩阵规模n而言，算法复杂度是O(n3), n非常大时, 计算非常慢，甚至根本无法完成。</li>
+<li>可能出现矩阵不可逆的情况，在这里不进行数学上的分析，但是可以说明，以下两种情况容易导致矩阵不可逆。<ul>
+<li>我们使用了冗余的特征，例如我们选取的两个特征始终保持倍数关系，则这两个特征向量线性相关。此时应该去除冗余的向量。</li>
+<li>我们使用了太多的特征(特征的数量超过了样本的数量).，也可以理解为样本的数量太少，对于这种情况我们可以删掉一些特征或者使用<strong>正则化</strong>（在下一篇文章中会讲到）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="梯度下降法-1"><a href="#梯度下降法-1" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><p>此处的梯度下降法和之前一元线性回归的梯度下降法基本相同，无非是一元线性回归只有两个需要求的参数，而多元线性回归中有多个待求参数。其余的只需要将导数项换掉即可。最终得到的式子如下：<br>$$w_0 = w_0 - a \frac1m  \sum_{i=1}^{n} {(f(x_i)-y_i)},w_0是常数项$$<br>$$w_j = w_j - a \frac1m  \sum_{i=1}^{n} {(f(x_i)-y_i)x_i^j},j\in{1,2,3\cdots n}$$<br>与正规方程法相比，梯度下降法当有大量特征时, 也能正常工作，仍可以在可接受的时间内完成。</p>
+<h3 id="泛化"><a href="#泛化" class="headerlink" title="泛化"></a>泛化</h3><p>之前我们提到过，线性模型并不是只能进行线性分类，它具有很强的泛化能力，如果仅仅使用在此之前的单元和多元线性回归，<strong>我们只能得到多维空间的高维平面</strong>，为了进一步增强泛化能力，我们可以引入<strong>幂次项</strong>。<br>比如我们原来有只有一个特征$x_1$，我们现在令$x_2=x_1^2$,就人为的引入了第二个特征，拥有更强的拟合能力。<br>我们还可以引入两个特征的交叉项，使得线性模型更强大。<br>例如，我们原本只有一个模型：<br>$$y=w_1x_1+w_2x_2$$<br>我们引入$x_3 = x_1^2,x_4=x_2^2,x_5=x_1x_2$，人为引入三个变量，我们的模型变为：<br>$$y=w_1^<em>x_1+w_2^</em>x_2+w_3x_3+w_4x_4+w_5x_5$$<br>也就是说，很多复杂的模型都可以转化为线性模型进行建模。<br>但是，我们也要防范<strong>过拟合</strong>问题，过多的人为特征很容易导致过拟合，我们将在下一个章节详细讨论。</p>
+<h3 id="检验"><a href="#检验" class="headerlink" title="检验"></a>检验</h3><p>那么，我们写好算法进行运行之后，如何检验我们的算法是否正常运行呢？一个办法就是看他的S（总误差）随时间变化的图像。<br>正常情况下，S应该随着算法的运行逐渐降低，降低的速度越来越小，但是如果算法错误，或者学习率不适宜，那么可能出现S反而增大或者抖动的现象，如下图所示：<br><img src="/2018/07/05/线性回归和梯度下降/2018-7-5-4.jpg" alt="参考图片"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>线性模型以其简单和可解释性在众多模型中脱颖而出，至今仍是经常使用的回归算法之一，在机器学习中仍然具有重要应用，如趋势线，流行病学预测，金融经济等。</p>
+<h3 id="查看更多"><a href="#查看更多" class="headerlink" title="查看更多"></a>查看更多</h3><p>所有的文章都会在我的博客和我的知乎专栏同步进行更新，欢迎阅读</p>
+<ul>
+<li><a href="https://braverychr.github.io/">我的博客</a></li>
+<li><a href="https://zhuanlan.zhihu.com/MLstudy" target="_blank" rel="noopener">知乎专栏</a></li>
+</ul>
+
       
     </div>
     
@@ -455,393 +484,82 @@
 
    <div>
 
+    ﻿<div>
+
+        
+-----------------------------------------------本文结束 谢谢阅读----------------------------------------------
+
+    
+</div>
+
 	</div>
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>生活不易，求打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="bravery 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://braveryCHR.github.io/2018/06/29/机器学习的概念、历史和未来/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="bravery">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/first.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈浩然的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/29/机器学习的概念、历史和未来/" itemprop="url">机器学习的概念、历史和未来</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-29T23:18:21+08:00">
-                2018-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
-
+            <a href="/tags/线性回归/" rel="tag"># 线性回归</a>
           
-            
+            <a href="/tags/梯度下降/" rel="tag"># 梯度下降</a>
           
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2,287 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          
-          相关概念提起机器学习，我们不得不给机器学习下一个准确的定义。在直观的层面，如果说计算机科学是研究关于算法的科学，那么机器学习就是研究关于“学习算法”的科学，或者说，不同于一般的显式编程，机器学习就是研究如何使得计算机在无法被显式编程的情况下进行学习的领域，需要注意的是，显式与否都是对于人类而言的——人类能否明确的搞清楚每个决策步骤，对于计算机而言，构成不同算法的代码与指令没有任何区别。更加精确的说
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/29/机器学习的概念、历史和未来/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/29/机器学习的概念、历史和未来/" rel="next" title="机器学习的概念、历史和未来">
+                <i class="fa fa-chevron-left"></i> 机器学习的概念、历史和未来
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-   <div>
+          <span class="post-nav-divider"></span>
 
-	</div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://braveryCHR.github.io/2018/06/27/机器学习序言/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="bravery">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/first.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈浩然的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/27/机器学习序言/" itemprop="url">机器学习序言</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-27T23:31:31+08:00">
-                2018-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  430 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          
-专栏介绍机器学习专栏是我在2018年暑假开始全面入门机器学习的心得和总结，在这个为期接近三个月的暑假中，我会学习传统机器学习，深度学习，以及强化学习三类主要的机器学习方法。在本栏目中，我不会照葫芦画瓢的搬抄其他地方的资料，所有的文章均为原创，均为我的心得体会和总结。所以存在一定程度的简洁和省略。本专栏的目的是和想入门机器学习的朋友们一起交流，共同成长，也是对自己学习的一种监督和升华。本专栏所有文
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/27/机器学习序言/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-   <div>
-
-	</div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -852,195 +570,37 @@
   </article>
 
 
-    
+
+    <div class="post-spread">
       
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://braveryCHR.github.io/2018/06/27/你好，博客世界/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="bravery">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/image/first.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陈浩然的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/27/你好，博客世界/" itemprop="url">你好，博客世界</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-27T18:15:14+08:00">
-                2018-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/问候/" itemprop="url" rel="index">
-                    <span itemprop="name">问候</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  25 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          这是我的第一个博客，以后我会在这里分享知识、经验与看法
-
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/27/你好，博客世界/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
       
     </div>
-    
-    
-    
-
-   <div>
-
-	</div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -1048,6 +608,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzY1MS8xNDE4Mg=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -1068,8 +637,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1162,6 +740,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性转换"><span class="nav-number">1.</span> <span class="nav-text">属性转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单变量线性回归"><span class="nav-number">2.</span> <span class="nav-text">单变量线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最小二乘法"><span class="nav-number">2.1.</span> <span class="nav-text">最小二乘法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法"><span class="nav-number">2.2.</span> <span class="nav-text">梯度下降法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多变量线性回归"><span class="nav-number">3.</span> <span class="nav-text">多变量线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特征缩放"><span class="nav-number">3.1.</span> <span class="nav-text">特征缩放</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正规方程法"><span class="nav-number">3.2.</span> <span class="nav-text">正规方程法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#梯度下降法-1"><span class="nav-number">3.3.</span> <span class="nav-text">梯度下降法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛化"><span class="nav-number">4.</span> <span class="nav-text">泛化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检验"><span class="nav-number">5.</span> <span class="nav-text">检验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看更多"><span class="nav-number">7.</span> <span class="nav-text">查看更多</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1311,6 +905,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1339,6 +937,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
