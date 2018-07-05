@@ -29,4 +29,3 @@ Disallow: /fancybox/
 Sitemap: https://braverychr.github.io/sitemap.xml
 
 Sitemap: https://braverychr.github.io/baidusitemap.xml
-
