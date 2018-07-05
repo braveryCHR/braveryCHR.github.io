@@ -107,7 +107,7 @@
 <meta property="og:image" content="https://braverychr.github.io/image/2018-7-5-2.jpg">
 <meta property="og:image" content="https://braverychr.github.io/image/2018-7-5-3.jpg">
 <meta property="og:image" content="https://braverychr.github.io/image/2018-7-5-4.jpg">
-<meta property="og:updated_time" content="2018-07-05T11:36:04.253Z">
+<meta property="og:updated_time" content="2018-07-05T13:03:33.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性回归和梯度下降">
 <meta name="twitter:description" content="在上一章我们说到，机器学习中主要的两个任务就是回归和分类。如果读者有高中数学基础，我们很容易回忆到我们高中学习过的一种回归方法——线性回归。我们将这种方法泛化，就可以得到机器学习中的一种常见模型——线性模型，线性模型是监督学习的一种。我们已经说过，我们要从数据集中训练出模型，每个数据可以视为（属性，标签）二元组。其中属性可以为属性向量。假设给定具有n个属性的属性向量的数据 $\vec x = (x">
@@ -401,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,198 字
+                  3,199 字
                 </span>
               
 
@@ -457,7 +457,7 @@
 </ul>
 <h3 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h3><p>如果数据中属性是一个多维向量， $\vec x = (x_1,x_2,x_3 \dots x_n)$,那么该回归模型称为多变量线性回归。也就是一般意义上的线性回归模型。<br>我们先定义符号，$\vec x_i$ 代表第i个数据的属性值，它是一个向量，$x_i^j$表示第i个数据的第j个属性，它是一个实数，$y_i$是第i个数据的标签值，也是实数。f是我们学习到的模型，$f(\vec x_i)$即我们对第i个数据的预测值。<br>我们建立的模型为：<br>$$f(\vec x_i) = \vec w^T \cdot \vec x + b$$<br>我们的目标是，求得适当的 $\vec w$和b，使得S最小，其中S是预测值和真值的差距平方和，亦称为<strong>代价函数</strong>，当然代价函数还有很多其他的形式。<br>$$minS = \frac {1} {2n} \sum_{i=1}^{n} {(f(\vec x_i)-y_i)^2}$$<br>其中的$\frac1n$只是将代价函数值归一化的系数。</p>
 <h4 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h4><p>由于$\vec x$具有很多维的特征，每一维的特征大小可能相差甚多，这样会大大影响学习的速度。假如房价范围0-10000000，房子大小范围1-200，那么这两个特征学习到的系数大小会差很多倍，而学习率必须按照最小的系数来进行设定，则大系数的收敛会非常慢。<br>为了避免这种情况，我们使用了特征缩放将每个特征的值进行处理，使之在[-1,1]之间，当然，原本范围就于此在一个数量级的特征，也可以不进行处理。处理公式如下：<br>$$x_i = \frac {x_i-\overline x} {x_{max}-x_{min}}$$<br>或者<br>$$x_i = \frac {x_i-\overline x} {\sigma}$$<br>其中$\sigma$为数据标准差。</p>
-<h4 id="正规方程法"><a href="#正规方程法" class="headerlink" title="正规方程法"></a>正规方程法</h4><p>对于多元线性回归而言，正规方程法是一种准确的方法，就像最小二乘法对于单变量线性回归一样。<br>为了使形式更加简化，我们做以下符号设定：<br>$$<br>\vec X =<br> \left[<br> \begin{matrix}<br>  1 &amp; x_1^1 &amp; x_1^2 &amp; x_1^3 \dots &amp; x_1^n  \<br>  1 &amp;x_2^1 &amp; x_2^2 &amp; x_2^3 \dots &amp; x_2^n  \<br>  \cdots&amp; \cdots&amp; \cdots &amp; \cdots \<br>  1 &amp;x_n^1 &amp; x_n^2 &amp; x_n^3 \dots &amp; x_n^n  \<br>  \end{matrix}<br>  \right] \tag{3}<br>$$<br>由此，我们可以将S写成另一种形式，记为$S^<em>$，定义如下：<br>$$S^</em> = (\vec y -\vec X \cdot \vec w)^T(\vec y -\vec X \cdot \vec w)$$<br>请注意，$S^<em>$和S的区别仅仅在于它没有$\frac 1n$的系数，而该系数是一个定值，故最小化的目标和过程是一样的，我们在此要将$S^</em>$最小化。<br>同理，我们将$S^<em>$视为$\vec w$的函数，对于$\vec w$求导数，得到取得最小值时的$\vec w$的值，便是我们得到的结果，记为$\vec w^</em>$<br>$$\vec w^* =(\vec X^T \vec X)^{-1}\vec X^T\vec y$$<br>该方法得到了为准确值，即在我们给定条件下的最优解，但是该方法有两个弊端：</p>
+<h4 id="正规方程法"><a href="#正规方程法" class="headerlink" title="正规方程法"></a>正规方程法</h4><p>对于多元线性回归而言，正规方程法是一种准确的方法，就像最小二乘法对于单变量线性回归一样。<br>为了使形式更加简化，我们做以下符号设定<br>$$<br>\vec X =<br> \left[<br> \begin{matrix}<br>  1 &amp; x_1^1 &amp; x_1^2 &amp; x_1^3 \dots &amp; x_1^n  \\<br>  1 &amp;x_2^1 &amp; x_2^2 &amp; x_2^3 \dots &amp; x_2^n  \\<br>  \cdots&amp; \cdots&amp; \cdots &amp; \cdots \\<br>  1 &amp;x_n^1 &amp; x_n^2 &amp; x_n^3 \dots &amp; x_n^n  \\<br>  \end{matrix}<br>  \right] \tag{3}<br>$$<br>由此，我们可以将S写成另一种形式，定义如下<br>$$ S^1 = (\vec y -\vec X \cdot \vec w)^T(\vec y -\vec X \cdot \vec w) $$<br>请注意，$S^1$和S的区别仅仅在于它没有$\frac 1n$的系数，而该系数是一个定值，故最小化的目标和过程是一样的，我们在此要将$S^1$最小化。<br>同理，我们将$S^1$视为$\vec w$的函数，对于$\vec w$求导数，得到取得最小值时的$\vec w$的值，便是我们得到的结果，记为$\vec w^1$<br>$$\vec w^1 =(\vec X^T \vec X)^{-1}\vec X^T\vec y$$<br>该方法得到了为准确值，即在我们给定条件下的最优解，但是该方法有两个弊端：</p>
 <ul>
 <li>需要计算$(\vec X^T \vec X)^{-1}$，相对于矩阵规模n而言，算法复杂度是O(n3), n非常大时, 计算非常慢，甚至根本无法完成。</li>
 <li>可能出现矩阵不可逆的情况，在这里不进行数学上的分析，但是可以说明，以下两种情况容易导致矩阵不可逆。<ul>
@@ -467,7 +467,7 @@
 </li>
 </ul>
 <h4 id="梯度下降法-1"><a href="#梯度下降法-1" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><p>此处的梯度下降法和之前一元线性回归的梯度下降法基本相同，无非是一元线性回归只有两个需要求的参数，而多元线性回归中有多个待求参数。其余的只需要将导数项换掉即可。最终得到的式子如下：<br>$$w_0 = w_0 - a \frac1m  \sum_{i=1}^{n} {(f(x_i)-y_i)},w_0是常数项$$<br>$$w_j = w_j - a \frac1m  \sum_{i=1}^{n} {(f(x_i)-y_i)x_i^j},j\in{1,2,3\cdots n}$$<br>与正规方程法相比，梯度下降法当有大量特征时, 也能正常工作，仍可以在可接受的时间内完成。</p>
-<h3 id="泛化"><a href="#泛化" class="headerlink" title="泛化"></a>泛化</h3><p>之前我们提到过，线性模型并不是只能进行线性分类，它具有很强的泛化能力，如果仅仅使用在此之前的单元和多元线性回归，<strong>我们只能得到多维空间的高维平面</strong>，为了进一步增强泛化能力，我们可以引入<strong>幂次项</strong>。<br>比如我们原来有只有一个特征$x_1$，我们现在令$x_2=x_1^2$,就人为的引入了第二个特征，拥有更强的拟合能力。<br>我们还可以引入两个特征的交叉项，使得线性模型更强大。<br>例如，我们原本只有一个模型：<br>$$y=w_1x_1+w_2x_2$$<br>我们引入$x_3 = x_1^2,x_4=x_2^2,x_5=x_1x_2$，人为引入三个变量，我们的模型变为：<br>$$y=w_1^<em>x_1+w_2^</em>x_2+w_3x_3+w_4x_4+w_5x_5$$<br>也就是说，很多复杂的模型都可以转化为线性模型进行建模。<br>但是，我们也要防范<strong>过拟合</strong>问题，过多的人为特征很容易导致过拟合，我们将在下一个章节详细讨论。</p>
+<h3 id="泛化"><a href="#泛化" class="headerlink" title="泛化"></a>泛化</h3><p>之前我们提到过，线性模型并不是只能进行线性分类，它具有很强的泛化能力，如果仅仅使用在此之前的单元和多元线性回归，<strong>我们只能得到多维空间的高维平面</strong>，为了进一步增强泛化能力，我们可以引入<strong>幂次项</strong>。<br>比如我们原来有只有一个特征$x_1$，我们现在令$x_2=x_1^2$,就人为的引入了第二个特征，拥有更强的拟合能力。<br>我们还可以引入两个特征的交叉项，使得线性模型更强大。<br>例如，我们原本只有一个模型：<br>$$y=w_1x_1+w_2x_2$$<br>我们引入$x_3 = x_1^2,x_4=x_2^2,x_5=x_1x_2$，人为引入三个变量，我们的模型变为：<br>$$y=w_1x_1+w_2x_2+w_3x_3+w_4x_4+w_5x_5$$<br>也就是说，很多复杂的模型都可以转化为线性模型进行建模。<br>但是，我们也要防范<strong>过拟合</strong>问题，过多的人为特征很容易导致过拟合，我们将在下一个章节详细讨论。</p>
 <h3 id="检验"><a href="#检验" class="headerlink" title="检验"></a>检验</h3><p>那么，我们写好算法进行运行之后，如何检验我们的算法是否正常运行呢？一个办法就是看他的S（总误差）随时间变化的图像。<br>正常情况下，S应该随着算法的运行逐渐降低，降低的速度越来越小，但是如果算法错误，或者学习率不适宜，那么可能出现S反而增大或者抖动的现象，如下图所示：<br><img src="/image/2018-7-5-4.jpg" alt="参考图片"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>线性模型以其简单和可解释性在众多模型中脱颖而出，至今仍是经常使用的回归算法之一，在机器学习中仍然具有重要应用，如趋势线，流行病学预测，金融经济等。</p>
 <h3 id="查看更多"><a href="#查看更多" class="headerlink" title="查看更多"></a>查看更多</h3><p>所有的文章都会在我的博客和我的知乎专栏同步进行更新，欢迎阅读</p>
