@@ -103,15 +103,15 @@
 <meta property="og:site_name" content="陈浩然的博客">
 <meta property="og:description" content="在上一章我们说到，机器学习中主要的两个任务就是回归和分类。如果读者有高中数学基础，我们很容易回忆到我们高中学习过的一种回归方法——线性回归。我们将这种方法泛化，就可以得到机器学习中的一种常见模型——线性模型，线性模型是监督学习的一种。我们已经说过，我们要从数据集中训练出模型，每个数据可以视为（属性，标签）二元组。其中属性可以为属性向量。假设给定具有n个属性的属性向量的数据 $\vec x = (x">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://braverychr.github.io/2018/07/05/线性回归和梯度下降/2018-7-5-1.jpg">
-<meta property="og:image" content="https://braverychr.github.io/2018/07/05/线性回归和梯度下降/2018-7-5-2.jpg">
-<meta property="og:image" content="https://braverychr.github.io/2018/07/05/线性回归和梯度下降/2018-7-5-3.jpg">
-<meta property="og:image" content="https://braverychr.github.io/2018/07/05/线性回归和梯度下降/2018-7-5-4.jpg">
-<meta property="og:updated_time" content="2018-07-05T11:31:46.966Z">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-5-1.jpg">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-5-2.jpg">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-5-3.jpg">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-5-4.jpg">
+<meta property="og:updated_time" content="2018-07-05T11:36:04.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性回归和梯度下降">
 <meta name="twitter:description" content="在上一章我们说到，机器学习中主要的两个任务就是回归和分类。如果读者有高中数学基础，我们很容易回忆到我们高中学习过的一种回归方法——线性回归。我们将这种方法泛化，就可以得到机器学习中的一种常见模型——线性模型，线性模型是监督学习的一种。我们已经说过，我们要从数据集中训练出模型，每个数据可以视为（属性，标签）二元组。其中属性可以为属性向量。假设给定具有n个属性的属性向量的数据 $\vec x = (x">
-<meta name="twitter:image" content="https://braverychr.github.io/2018/07/05/线性回归和梯度下降/2018-7-5-1.jpg">
+<meta name="twitter:image" content="https://braverychr.github.io/image/2018-7-5-1.jpg">
 
 
 
@@ -446,11 +446,11 @@
 </ul>
 <h3 id="单变量线性回归"><a href="#单变量线性回归" class="headerlink" title="单变量线性回归"></a>单变量线性回归</h3><p>如果 $x = (x_1,x_2,x_3 \dots x_n)$中n= 1，此时x为一个实数，线性回归模型就退化为单变量线性回归。我们将模型记为<br>$$f(x)=w x + b$$<br>其中w,x,b都是实数,相信这个模型大家在高中都学习过。在这里我们有两种方法求解这个模型，分别是<strong>最小二乘法</strong>和<strong>梯度下降法</strong>。<br>我们先定义符号，$x_i$ 代表第i个数据的属性值，$y_i$是第i个数据的标签值（即真值），f是我们学习到的模型，$f(x_i)$即我们对第i个数据的预测值。<br>我们的目标是，求得适当的w和b，使得S最小，其中S是预测值和真值的差距平方和，亦称为<strong>代价函数</strong>，当然代价函数还有很多其他的形式。<br>$$minS = \frac {1} {2n} \sum_{i=1}^{n} {(f(x_i)-y_i)^2}$$<br>其中的$\frac1n$只是将代价函数值归一化的系数。</p>
 <h4 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h4><p>最小二乘法不是我们在这里要讨论的重点，但也是在很多地方会使用到的重要方法。<br>最小二乘法使用参数估计，将S看做一个关于w和b的函数，分别对w和b求偏导数，使得偏导数为0，由微积分知识知道，在此次可以取得S的最小值。由这两个方程即可求得w和b的值。（此处省略过程）<br>求得<br>$$w = \frac {\sum_{i=1}^{n} {y_i(x_i-\overline x)}} {\sum_{i=1}^{n} {x_i^2} -\frac 1m(\sum_{i=1}^{n} {x_i})^2 }$$<br>$$b = \overline y -b \overline x$$<br>其中$\overline y，\overline x$分别是y和x的均值</p>
-<h4 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><p>我们刚刚利用了方程的方法求得了单变量线性回归的模型。但是对于几百万，上亿的数据，这种方法太慢了，这时，我们可以使用<strong>凸优化</strong>中最常见的方法之一——<strong>梯度下降法</strong>，来更加迅速的求得使得S最小的w和b的值。<br>S可以看做w和b的函数 $S(w，b)$，这是一个双变量的函数，我们用matlab画出他的函数图像，可以看出这是一个明显的凸函数。<br><img src="/2018/07/05/线性回归和梯度下降/2018-7-5-1.jpg" alt="参考图片"><br>梯度下降法的相当于<strong>我们下山的过程</strong>，每次我们要走一步下山，寻找最低的地方，那么最可靠的方法便是环顾四周，寻找能一步到达的最低点，持续该过程，最后得到的便是最低点。<br>对于函数而言，便是求得该函数对所有参数（变量）的偏导，每次更新这些参数，直到到达最低点为止，注意这些参数必须在每一轮一起更新，而不是一个一个更新。<br>过程如下：<br>$$给w、b随机赋初值,一般可以都设为0$$<br>$$w_{new} = w - a\frac {\partial S(w,b)}{\partial w}，b_{new} = b - a\frac {\partial S(w,b)}{\partial b}$$<br>$$w = w_{new},b = b_{new}$$<br>带入真正的表达式，即为<br>$$w_0 = w_0 - a \frac1m  \sum_{i=1}^{n} {(f(x_i)-y_i)},w_0是常数项$$<br>$$w_j = w_j - a \frac1m  \sum_{j=1}^{n} {(f(x_i)-y_i)x_i},j\in{1,2,3\cdots n}$$<br>其中a为学习率，是一个实数。整个过程形象表示便是如下图所示，一步一步走，最后达到最低点。<br><img src="/2018/07/05/线性回归和梯度下降/2018-7-5-2.jpg" alt="参考图片"><br>需要说明以下几点：</p>
+<h4 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><p>我们刚刚利用了方程的方法求得了单变量线性回归的模型。但是对于几百万，上亿的数据，这种方法太慢了，这时，我们可以使用<strong>凸优化</strong>中最常见的方法之一——<strong>梯度下降法</strong>，来更加迅速的求得使得S最小的w和b的值。<br>S可以看做w和b的函数 $S(w，b)$，这是一个双变量的函数，我们用matlab画出他的函数图像，可以看出这是一个明显的凸函数。<br><img src="/image/2018-7-5-1.jpg" alt="参考图片"><br>梯度下降法的相当于<strong>我们下山的过程</strong>，每次我们要走一步下山，寻找最低的地方，那么最可靠的方法便是环顾四周，寻找能一步到达的最低点，持续该过程，最后得到的便是最低点。<br>对于函数而言，便是求得该函数对所有参数（变量）的偏导，每次更新这些参数，直到到达最低点为止，注意这些参数必须在每一轮一起更新，而不是一个一个更新。<br>过程如下：<br>$$给w、b随机赋初值,一般可以都设为0$$<br>$$w_{new} = w - a\frac {\partial S(w,b)}{\partial w}，b_{new} = b - a\frac {\partial S(w,b)}{\partial b}$$<br>$$w = w_{new},b = b_{new}$$<br>带入真正的表达式，即为<br>$$w_0 = w_0 - a \frac1m  \sum_{i=1}^{n} {(f(x_i)-y_i)},w_0是常数项$$<br>$$w_j = w_j - a \frac1m  \sum_{j=1}^{n} {(f(x_i)-y_i)x_i},j\in{1,2,3\cdots n}$$<br>其中a为学习率，是一个实数。整个过程形象表示便是如下图所示，一步一步走，最后达到最低点。<br><img src="/image/2018-7-5-2.jpg" alt="参考图片"><br>需要说明以下几点：</p>
 <ul>
 <li>a为学习率，学习率决定了学习的速度。<ul>
 <li>如果a过小，那么学习的时间就会很长，导致算法的低效，不如直接使用最小二乘法。</li>
-<li>如果a过大，那么由于每一步更新过大，可能无法收敛到最低点。由于越偏离最低点函数的导数越大，如果a过大，某一次更新直接跨越了最低点，来到了比更新之前<strong>更高</strong>的地方。那么下一步更新步会更大，如此反复震荡，离最佳点越来越远。以上两种情况如下图所示<br><img src="/2018/07/05/线性回归和梯度下降/2018-7-5-3.jpg" alt="参考图片"></li>
+<li>如果a过大，那么由于每一步更新过大，可能无法收敛到最低点。由于越偏离最低点函数的导数越大，如果a过大，某一次更新直接跨越了最低点，来到了比更新之前<strong>更高</strong>的地方。那么下一步更新步会更大，如此反复震荡，离最佳点越来越远。以上两种情况如下图所示<br><img src="/image/2018-7-5-3.jpg" alt="参考图片"></li>
 </ul>
 </li>
 <li>我们的算法不一定能达到最优解。如上图爬山模型可知，如果我们初始位置发生变化，那么可能会到达不同的极小值点。但是由于线性回归模型中的函数都是<a href="https://baike.baidu.com/item/%E5%87%B8%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">凸函数</a>,所以利用梯度下降法，是可以找到全局最优解的，在这里不详细阐述。</li>
@@ -468,7 +468,7 @@
 </ul>
 <h4 id="梯度下降法-1"><a href="#梯度下降法-1" class="headerlink" title="梯度下降法"></a>梯度下降法</h4><p>此处的梯度下降法和之前一元线性回归的梯度下降法基本相同，无非是一元线性回归只有两个需要求的参数，而多元线性回归中有多个待求参数。其余的只需要将导数项换掉即可。最终得到的式子如下：<br>$$w_0 = w_0 - a \frac1m  \sum_{i=1}^{n} {(f(x_i)-y_i)},w_0是常数项$$<br>$$w_j = w_j - a \frac1m  \sum_{i=1}^{n} {(f(x_i)-y_i)x_i^j},j\in{1,2,3\cdots n}$$<br>与正规方程法相比，梯度下降法当有大量特征时, 也能正常工作，仍可以在可接受的时间内完成。</p>
 <h3 id="泛化"><a href="#泛化" class="headerlink" title="泛化"></a>泛化</h3><p>之前我们提到过，线性模型并不是只能进行线性分类，它具有很强的泛化能力，如果仅仅使用在此之前的单元和多元线性回归，<strong>我们只能得到多维空间的高维平面</strong>，为了进一步增强泛化能力，我们可以引入<strong>幂次项</strong>。<br>比如我们原来有只有一个特征$x_1$，我们现在令$x_2=x_1^2$,就人为的引入了第二个特征，拥有更强的拟合能力。<br>我们还可以引入两个特征的交叉项，使得线性模型更强大。<br>例如，我们原本只有一个模型：<br>$$y=w_1x_1+w_2x_2$$<br>我们引入$x_3 = x_1^2,x_4=x_2^2,x_5=x_1x_2$，人为引入三个变量，我们的模型变为：<br>$$y=w_1^<em>x_1+w_2^</em>x_2+w_3x_3+w_4x_4+w_5x_5$$<br>也就是说，很多复杂的模型都可以转化为线性模型进行建模。<br>但是，我们也要防范<strong>过拟合</strong>问题，过多的人为特征很容易导致过拟合，我们将在下一个章节详细讨论。</p>
-<h3 id="检验"><a href="#检验" class="headerlink" title="检验"></a>检验</h3><p>那么，我们写好算法进行运行之后，如何检验我们的算法是否正常运行呢？一个办法就是看他的S（总误差）随时间变化的图像。<br>正常情况下，S应该随着算法的运行逐渐降低，降低的速度越来越小，但是如果算法错误，或者学习率不适宜，那么可能出现S反而增大或者抖动的现象，如下图所示：<br><img src="/2018/07/05/线性回归和梯度下降/2018-7-5-4.jpg" alt="参考图片"></p>
+<h3 id="检验"><a href="#检验" class="headerlink" title="检验"></a>检验</h3><p>那么，我们写好算法进行运行之后，如何检验我们的算法是否正常运行呢？一个办法就是看他的S（总误差）随时间变化的图像。<br>正常情况下，S应该随着算法的运行逐渐降低，降低的速度越来越小，但是如果算法错误，或者学习率不适宜，那么可能出现S反而增大或者抖动的现象，如下图所示：<br><img src="/image/2018-7-5-4.jpg" alt="参考图片"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>线性模型以其简单和可解释性在众多模型中脱颖而出，至今仍是经常使用的回归算法之一，在机器学习中仍然具有重要应用，如趋势线，流行病学预测，金融经济等。</p>
 <h3 id="查看更多"><a href="#查看更多" class="headerlink" title="查看更多"></a>查看更多</h3><p>所有的文章都会在我的博客和我的知乎专栏同步进行更新，欢迎阅读</p>
 <ul>
