@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://braveryCHR.github.io/2018/06/27/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E5%8D%9A%E5%AE%A2%E4%B8%96%E7%95%8C/</loc>
+    <lastmod>2018-07-06T05:46:41.534Z</lastmod>
+    <data>
+        <display>
+        <title>你好，博客世界</title>
+        <pubTime>2018-06-27T10:15:14.000Z</pubTime>
+        
+        <tag>测试</tag>
+         
+         
+           
+             
+              <breadCrumb title="问候" url="https://braveryCHR.github.io/categories/%E9%97%AE%E5%80%99/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://braveryCHR.github.io/2018/07/05/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%92%8C%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/</loc>
     <lastmod>2018-07-05T13:03:33.877Z</lastmod>
     <data>
@@ -69,26 +89,6 @@
            
              
               <breadCrumb title="机器学习" url="https://braveryCHR.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://braveryCHR.github.io/2018/06/27/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E5%8D%9A%E5%AE%A2%E4%B8%96%E7%95%8C/</loc>
-    <lastmod>2018-06-27T10:18:16.307Z</lastmod>
-    <data>
-        <display>
-        <title>你好，博客世界</title>
-        <pubTime>2018-06-27T10:15:14.000Z</pubTime>
-        
-        <tag>测试</tag>
-         
-         
-           
-             
-              <breadCrumb title="问候" url="https://braveryCHR.github.io/categories/%E9%97%AE%E5%80%99/"/>
           
         </display>
     </data>
