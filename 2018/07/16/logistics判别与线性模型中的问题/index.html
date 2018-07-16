@@ -103,14 +103,14 @@
 <meta property="og:site_name" content="陈浩然的博客">
 <meta property="og:description" content="logistic判别与线性模型中的问题之前说过，机器学习的两大任务是回归和分类，上章的线性回归模型适合进行回归分析，例如预测房价，但是当输出的结果为离散值时，线性回归模型就不适用了。我们的任务是：将回归分析中的实数值转化为离散值或者对于离散值的概率 logistic判别转换函数例如我们进行癌症判定，回归模型可以输出癌症几率a，并且 $a\in (0,1)$，而我们的任务是将几率转化为0、1两个结果">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://braverychr.github.io/2018/07/16/logistics判别与线性模型中的问题/image/2018-7-15-1.jpg">
-<meta property="og:image" content="https://braverychr.github.io/2018/07/16/logistics判别与线性模型中的问题/image/2018-7-15-2.jpg">
-<meta property="og:image" content="https://braverychr.github.io/2018/07/16/logistics判别与线性模型中的问题/image/2018-7-16-1.jpg">
-<meta property="og:updated_time" content="2018-07-16T08:10:40.093Z">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-15-1.jpg">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-15-2.jpg">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-16-1.jpg">
+<meta property="og:updated_time" content="2018-07-16T08:12:32.153Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="logistics判别与线性模型中的问题">
 <meta name="twitter:description" content="logistic判别与线性模型中的问题之前说过，机器学习的两大任务是回归和分类，上章的线性回归模型适合进行回归分析，例如预测房价，但是当输出的结果为离散值时，线性回归模型就不适用了。我们的任务是：将回归分析中的实数值转化为离散值或者对于离散值的概率 logistic判别转换函数例如我们进行癌症判定，回归模型可以输出癌症几率a，并且 $a\in (0,1)$，而我们的任务是将几率转化为0、1两个结果">
-<meta name="twitter:image" content="https://braverychr.github.io/2018/07/16/logistics判别与线性模型中的问题/image/2018-7-15-1.jpg">
+<meta name="twitter:image" content="https://braverychr.github.io/image/2018-7-15-1.jpg">
 
 
 
@@ -441,11 +441,11 @@
 <h3 id="logistic判别"><a href="#logistic判别" class="headerlink" title="logistic判别"></a>logistic判别</h3><h4 id="转换函数"><a href="#转换函数" class="headerlink" title="转换函数"></a>转换函数</h4><p>例如我们进行<strong>癌症判定</strong>，回归模型可以输出癌症几率a，并且 $a\in (0,1)$，而我们的任务是将几率转化为0、1两个结果（例如0表示无癌，1表示患癌）。<br>如果我们使用前一章的线性回归模型，可以认为&gt;0.5的结果看成1，&lt;0.5的结果看成0，便可以得到下列的转换函数：<br>$$<br>result=0, y&lt;(=)0.5  \\<br>result=1, y&gt;(=)0.5 \\<br>$$<br>这个公式看上去十分直观，但是有一些明显的缺点：</p>
 <ol>
 <li>并非所有的连续值都可以均匀映射在[0,1]之间，例如人的身高在区间[120,250]之间，但是大部分人身高都取在该区间的<strong>中值</strong>，两端较少。</li>
-<li>一些极端值可能会大大影响分类的效果，例如出现了一个身高0.7m的侏儒病患者，则映射区间变成了[70,250]-&gt;[0,1]，原来的中值180可能在这种情况下只能映射为0.3，使得分类效果变差。如下图所示： <img src="./image/2018-7-15-1.jpg" alt="参考图片"></li>
+<li>一些极端值可能会大大影响分类的效果，例如出现了一个身高0.7m的侏儒病患者，则映射区间变成了[70,250]-&gt;[0,1]，原来的中值180可能在这种情况下只能映射为0.3，使得分类效果变差。如下图所示： <img src="/image/2018-7-15-1.jpg" alt="参考图片"></li>
 </ol>
-<p>为了解决以上这些问题，我们提出了一个特殊的转换函数，<strong>对数几率函数</strong>，又称<strong>sigmoid函数</strong><br>$$<br>y=\frac {1} {1+e^{-x}}<br>$$<br>其图像如下： <img src="./image/2018-7-15-2.jpg" alt="参考图片"><br>可以很明显的看出，该函数将<strong>实数域映射成了[0,1]的区间</strong>，带入我们的线性回归方程，可得：<br>$$<br>y = \frac 1 {1+e^{-(\vec w^T \vec x+b)}}<br>$$<br>于是，无论线性回归取何值，我们都可以将其转化为[0,1]之间的值，经过变换可知：<br>$$<br>ln(\frac y {1-y}) = \vec w^T \vec x+b<br>$$<br>故在该函数中，$ln(\frac y {1-y})$ 代表了$\vec x$ 为正例的可行性大小，由于含有对数，所以称为对数几率，其中y为正例几率，1-y为反例几率。<br>所以在算法中，最终得到的结果y便代表是正例的几率，它在[0,1]之间，一般而言，<strong>如果y大于0.5，我们将其视为正例，如果y小于0.5，我们将其视为反例</strong>。</p>
+<p>为了解决以上这些问题，我们提出了一个特殊的转换函数，<strong>对数几率函数</strong>，又称<strong>sigmoid函数</strong><br>$$<br>y=\frac {1} {1+e^{-x}}<br>$$<br>其图像如下： <img src="/image/2018-7-15-2.jpg" alt="参考图片"><br>可以很明显的看出，该函数将<strong>实数域映射成了[0,1]的区间</strong>，带入我们的线性回归方程，可得：<br>$$<br>y = \frac 1 {1+e^{-(\vec w^T \vec x+b)}}<br>$$<br>于是，无论线性回归取何值，我们都可以将其转化为[0,1]之间的值，经过变换可知：<br>$$<br>ln(\frac y {1-y}) = \vec w^T \vec x+b<br>$$<br>故在该函数中，$ln(\frac y {1-y})$ 代表了$\vec x$ 为正例的可行性大小，由于含有对数，所以称为对数几率，其中y为正例几率，1-y为反例几率。<br>所以在算法中，最终得到的结果y便代表是正例的几率，它在[0,1]之间，一般而言，<strong>如果y大于0.5，我们将其视为正例，如果y小于0.5，我们将其视为反例</strong>。</p>
 <h4 id="更新策略"><a href="#更新策略" class="headerlink" title="更新策略"></a>更新策略</h4><p>我们将转换函数 $y = \frac 1 {1+e^{-(\vec w^T \vec x+b)}}$ 称为$h_w(x)$，这是原本的线性回归$ f(x) = w^Tx+b$ 和sigmoid函数$y=\frac {1} {1+e^{-x}}$结合得到的。<br>由于这个函数并不是凸函数，<strong>直接带入我们之前的梯度下降策略是无效的，得不到优化的结果</strong>，所以要更换梯度下降策略。<br>定义新的代价函数：<br>$$<br>Cost(h_w(x),y) = -log(h_w(x)) , y = 1 \\<br>Cost(h_w(x),y) = -log(1-h_w(x)) , y = 0\\<br>$$<br>观察该式可知，无论y取0还是1，当$h_w(x)$与y差距越大，代价函数值越大，且趋于正无穷，代价函数取值范围为$[0,+ \infty]$。<br>将上面的代价函数写成另一种形式，便于进行求导：<br>$$<br>Cost(h_w(x),y) = -ylog(h_w(x)) -(1-y)log(1-h_w(x))<br>$$<br>将所有的数据项代价累计起来，得到最终的代价函数形式：<br>$$<br>J(h_w(x),y) = -\frac1m \lbrace \sum_{i=1}^{m} y^ilog(h_w(x^i)) +(1-y^i)log(1-h_w(x^i)) \rbrace<br>$$<br>对于该函数使用<strong>梯度下降</strong>，分别对每一个$\vec w$的每一项进行求导和更新即可</p>
-<h3 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h3><p>当我们利用线性回归拟合数据时，为了拟合较为复杂的数据，可能会引入较多的参数，例如：<br>$$<br>y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_3 + \theta_4 x_4 \\<br>其中 x_1 = x , x_2 =x^2,x_3=x^3,x_4 = x^4<br>$$<br>我们可能会得到下面两种图像：<img src="./image/2018-7-16-1.jpg" alt="参考图片"><br>在理想情况下，我们的算法应该得到左边的图像，而右边的图像显然有<strong>过拟合</strong>的倾向。</p>
+<h3 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h3><p>当我们利用线性回归拟合数据时，为了拟合较为复杂的数据，可能会引入较多的参数，例如：<br>$$<br>y = \theta_0 + \theta_1 x_1 + \theta_2 x_2 + \theta_3 x_3 + \theta_4 x_4 \\<br>其中 x_1 = x , x_2 =x^2,x_3=x^3,x_4 = x^4<br>$$<br>我们可能会得到下面两种图像：<img src="/image/2018-7-16-1.jpg" alt="参考图片"><br>在理想情况下，我们的算法应该得到左边的图像，而右边的图像显然有<strong>过拟合</strong>的倾向。</p>
 <blockquote>
 <p>在统计学中，过拟合（英语：overfitting，或称过度拟合）现象是指在拟合一个统计模型时，使用过多参数。对比于可获取的数据总量来说，一个荒谬的模型只要足够复杂，是可以完美地适应数据。过拟合一般可以视为违反奥卡姆剃刀原则。当可选择的参数的自由度超过数据所包含信息内容时，这会导致最后（拟合后）模型使用任意的参数，这会减少或破坏模型一般化的能力更甚于适应数据。过拟合的可能性不只取决于参数个数和数据，也跟模型架构与数据的一致性有关。此外对比于数据中预期的噪声或错误数量，跟模型错误的数量也有关。</p>
 </blockquote>
