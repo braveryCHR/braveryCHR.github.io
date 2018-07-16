@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>https://braveryCHR.github.io/2018/07/16/logistics%E5%88%A4%E5%88%AB%E4%B8%8E%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2018-07-16T08:10:40.093Z</lastmod>
+    <data>
+        <display>
+        <title>logistics判别与线性模型中的问题</title>
+        <pubTime>2018-07-16T07:56:08.000Z</pubTime>
+        
+        <tag>机器学习</tag>
+         
+        <tag>logistics判别</tag>
+         
+        <tag>线性回归</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="https://braveryCHR.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://braveryCHR.github.io/2018/06/27/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E5%8D%9A%E5%AE%A2%E4%B8%96%E7%95%8C/</loc>
     <lastmod>2018-07-06T05:46:41.534Z</lastmod>
     <data>
@@ -79,9 +103,9 @@
         <title>机器学习序言</title>
         <pubTime>2018-06-27T15:31:31.000Z</pubTime>
         
-        <tag>问候</tag>
-         
         <tag>机器学习</tag>
+         
+        <tag>问候</tag>
          
         <tag>序言</tag>
          
