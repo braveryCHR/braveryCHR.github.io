@@ -2054,7 +2054,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #bae92a;
+  background: #0af0ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3171,4 +3171,16 @@ pre {
 }
 .container {
   background-color: rgba(230,230,230,0.75);
+}
+body {
+  background: url("https://source.unsplash.com/random/1600x900");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+.main-inner {
+  margin-top: 60px;
+  padding: 60px 60px 60px 60px;
+  background: #fff;
+  min-height: 500px;
 }
