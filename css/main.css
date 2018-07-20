@@ -2054,7 +2054,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0af0ff;
+  background: #7353ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2986,7 +2986,7 @@ hr {
 }
 .posts-expand .post-title,
 .posts-expand .post-meta {
-  text-align: left;
+  text-align: center;
 }
 @media (max-width: 767px) {
   .posts-expand .post-title,
@@ -2998,14 +2998,14 @@ hr {
   display: none;
 }
 .posts-expand .post {
-  margin-top: 120px;
+  margin-top: 50px;
 }
 .posts-expand .post:first-child {
   margin-top: 0;
 }
 .posts-expand .post-meta {
   margin-top: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .posts-expand .post-title {
   position: relative;
@@ -3049,7 +3049,7 @@ hr {
 }
 .post-button {
   margin-top: 20px;
-  text-align: left;
+  text-align: center;
 }
 .post-button a {
   padding: 0;
@@ -3179,8 +3179,8 @@ body {
   background-position: 50% 50%;
 }
 .main-inner {
-  margin-top: 60px;
-  padding: 60px 60px 60px 60px;
+  margin-top: 30px;
+  padding: 30px 30px 30px 30px;
   background: #fff;
   min-height: 500px;
 }
