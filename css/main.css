@@ -2054,7 +2054,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #2a7824;
+  background: #165378;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3173,14 +3173,14 @@ pre {
   background-color: rgba(230,230,230,0.75);
 }
 body {
-  background: url("http://lorempixel.com/400/200");
+  background: url("/images/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 50%;
 }
 .main-inner {
   margin-top: 30px;
-  padding: 30px 30px 30px 30px;
+  padding: 30px 10px 30px 10px;
   background: #fff;
   min-height: 500px;
 }
