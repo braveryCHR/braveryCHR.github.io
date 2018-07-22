@@ -103,15 +103,15 @@
 <meta property="og:site_name" content="陈浩然的博客">
 <meta property="og:description" content="模型评估上文叙述了当机器学习模型已经训练完成之后，我们该如何评估模型的好坏。 但是一般而言，机器学习模型的训练时间较长，在训练过程中，我们怎么样判断模型训练的状态和优劣呢？ 之前说过，训练过程中的最容易出现的问题就是过拟合和欠拟合，下面介绍判断拟合状态的方法。 之前介绍过方差、偏差的概念以及他们的意义，在训练过程中，我们会得到训练集和测试集的总误差，通过这两个参数，我们可以判断出算法的拟合状态。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://braverychr.github.io/image/2018-7-21-1.jpg">
-<meta property="og:image" content="https://braverychr.github.io/image/2018-7-21-2.jpg">
-<meta property="og:image" content="https://braverychr.github.io/image/2018-7-21-3.jpg">
-<meta property="og:image" content="https://braverychr.github.io/image/2018-7-21-4.jpg">
-<meta property="og:updated_time" content="2018-07-21T07:19:33.463Z">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-21-1.JPG">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-21-2.JPG">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-21-3.JPG">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-21-4.JPG">
+<meta property="og:updated_time" content="2018-07-22T01:25:40.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模型的选择、评估和优化-下">
 <meta name="twitter:description" content="模型评估上文叙述了当机器学习模型已经训练完成之后，我们该如何评估模型的好坏。 但是一般而言，机器学习模型的训练时间较长，在训练过程中，我们怎么样判断模型训练的状态和优劣呢？ 之前说过，训练过程中的最容易出现的问题就是过拟合和欠拟合，下面介绍判断拟合状态的方法。 之前介绍过方差、偏差的概念以及他们的意义，在训练过程中，我们会得到训练集和测试集的总误差，通过这两个参数，我们可以判断出算法的拟合状态。">
-<meta name="twitter:image" content="https://braverychr.github.io/image/2018-7-21-1.jpg">
+<meta name="twitter:image" content="https://braverychr.github.io/image/2018-7-21-1.JPG">
 
 
 
@@ -459,10 +459,10 @@
 <h4 id="拟合状态与样本规模"><a href="#拟合状态与样本规模" class="headerlink" title="拟合状态与样本规模"></a>拟合状态与样本规模</h4><p>首先，无论是过拟合还是欠拟合，由于一个特定的函数对于更多的数据更难以拟合，但是对预测是有利的，所以<strong>训练集误差会增加，测试集误差会减少</strong>。</p>
 <ul>
 <li><p>若出现欠拟合情形，增大数据量，训练集和测试集误差会趋于平缓，并且两者很接近，但是喂更多的数据基本无效。</p>
-<p><img src="/image/2018-7-21-1.jpg" alt="过拟合与欠拟合"></p>
+<p><img src="/image/2018-7-21-1.JPG" alt="过拟合与欠拟合"></p>
 </li>
 <li><p>若出现过拟合情形，增大数据量，训练集误差会持续增加，测试集误差会持续减少，并且两者相差较大。</p>
-<p><img src="/image/2018-7-21-2.jpg" alt="过拟合与欠拟合"></p>
+<p><img src="/image/2018-7-21-2.JPG" alt="过拟合与欠拟合"></p>
 </li>
 </ul>
 <h4 id="拟合状态与正则化项"><a href="#拟合状态与正则化项" class="headerlink" title="拟合状态与正则化项"></a>拟合状态与正则化项</h4><p>在线性回归、支持向量机等算法中，都会加入正则化项来防止过拟合，因为正则化项可以使得参数尽可能小。</p>
@@ -470,13 +470,13 @@
 <p>例如该式中的$\lambda​$即为正则化项的参数，其值越大，越可以避免过拟合，但是可能会陷入欠拟合泥淖之中。</p>
 <p>随着$\lambda$的增大，训练集误差会持续升高（因为拟合程度逐渐减小），而测试集误差会先下降后上升，期间有最低点。</p>
 <p>如图，$\lambda$较小时，会发生过拟合，所以测试集误差会很大，$\lambda$较大时，会发生欠拟合，所以测试集误差也会很大。</p>
-<p><img src="/image/2018-7-21-3.jpg" alt="过拟合与欠拟合"></p>
+<p><img src="/image/2018-7-21-3.JPG" alt="过拟合与欠拟合"></p>
 <h4 id="拟合状态和模型复杂性"><a href="#拟合状态和模型复杂性" class="headerlink" title="拟合状态和模型复杂性"></a>拟合状态和模型复杂性</h4><p>显然，选择的特性越多，模型越复杂。例如一个普通的线性回归，我们就可以选择：</p>
 <p>​            $$y_1=\theta_0 + \theta_1x$$        </p>
 <p>​            $$y_2=\theta_0 + \theta_1x +\theta_2x^2$$</p>
 <p>​            $$y_2=\theta_0 + \theta_1x +\theta_2x^2+\theta_3x^3……$$</p>
 <p>模型越复杂，学习能力越强，故训练集误差越小。但是对于测试集误差，当它减少到一定程度时，模型可能因为过于复杂而出现过拟合现象，误差反而增大。</p>
-<p><img src="/image/2018-7-21-4.jpg" alt="过拟合与欠拟合"></p>
+<p><img src="/image/2018-7-21-4.JPG" alt="过拟合与欠拟合"></p>
 <h3 id="模型优化"><a href="#模型优化" class="headerlink" title="模型优化"></a>模型优化</h3><p>如果我们已经发现当前算法效果并不好，会试图对算法进行一些优化，例如：加更多的特征，增加数据集，增大正则化项等，下表列举了常见的措施和应对情况。</p>
 <table>
 <thead>
@@ -747,12 +747,6 @@ var jiathis_config={
 
           
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://www.zhihu.com/people/96-48/activities" target="_blank" title="知乎">
-                      
-                        <i class="fa fa-fw fa-globe"></i>知乎</a>
-                  </span>
                 
                   <span class="links-of-author-item">
                     <a href="https://github.com/braveryCHR" target="_blank" title="GitHub">
