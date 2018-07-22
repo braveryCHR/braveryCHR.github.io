@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://braveryCHR.github.io/"/>
-  <updated>2018-07-22T01:25:40.631Z</updated>
+  <updated>2018-07-22T13:24:25.548Z</updated>
   <id>https://braveryCHR.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>朴素和半朴素贝叶斯</title>
+    <link href="https://braveryCHR.github.io/2018/07/22/%E6%9C%B4%E7%B4%A0%E5%92%8C%E5%8D%8A%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/"/>
+    <id>https://braveryCHR.github.io/2018/07/22/朴素和半朴素贝叶斯/</id>
+    <published>2018-07-22T13:19:17.000Z</published>
+    <updated>2018-07-22T13:24:25.548Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>贝叶斯决策论是<strong>概率框架</strong>下实施决策的基本方法，它基于概率和误判误差的最小化来进行判别，是一种<strong>分类</strong>问题的解法。</p><p><img src="/image/2018-7-22-1.png" alt="贝叶斯"></p><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>首先，将数据及其属性记为x，对于多分类任务，其可能的取值有N种，设为{$c_1,c_2,c_3…..c_N$}，统称为c。数据x的正确分类记为$c_x$。于是将算法的正确率记为：</p><p>​                $$P_{true}=\sum P(c_x|x)=P(c|x)​$$</p><p>若算法可以对x进行正确分类，则记误判误差为0。若错误分类，误差记为1.</p><p>于是，算法的总误差R可以表示为：</p><p>​                $$R(c|x)=1-P(c|x)$$</p><p>我们的目标是最小化$R(c|x)$，该目标可以转化为<strong>最大化P(c|x)</strong>。由逆概率公式可知：</p><p>​                $$P(c|x)=\frac {P(c)*P(x|c)} {P(x)}$$</p><p>成功利用逆概率公式将未知概率转化为我们已知的概率。</p><p>由逆概率公式知，判定x为类别i(记为$c_i$)的概率为，:</p><p>​                $$P(c_i|x)=\frac {P(c_i)*P(x|c_i)} {P(x)}$$        </p><p><strong>我们只需要求出x为任意类别的概率，若最大概率取在类别j处，便可以判定x为类别$c_j$</strong>。</p><p>由于在计算P($c_i$|x)时，需要计算的量有三个：P($c_i$),P(x|$c_i$),P(x)。</p><ol><li>由于判别任务是对于所有数据而言的，所以P(x)的概率对于任何样本都是一样的，<strong>可以忽略不计</strong>。</li><li>P($c_i$)代表类别$c_i$在总体中所占的比例，可以利用$$p(c_i) = \frac{|D_i|}{|D|}$$计算得到，其中$D_i$代表类别为$c_i$的样本集合，D为总样本集合。</li><li>难点出现在计算P(x|$c_i$)上面，该如何计算出现某一个类别$c_i$中出现数据x的概率。</li></ol><p>显然，由于x非常多，例如一个具有100个二值属性的x可以的取值有$2^{100}$种，在训练集中不可能取得x的所有取值的样本，所以我们必须要估计P(x|$c_i$)的值。</p><h3 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h3><p>由于x实际上是由n个属性组成的，记为{$x_1,x_2……x_n$}。朴素贝叶斯方法有一个重要假设：</p><blockquote><p>对于已知的类别，假设其每个属性之间是独立的。</p></blockquote><p>若假设成立，便可以有公式：</p><p>​                $$P(x|c_i) = \prod_{j=1}^{n} {P(x_j|c_i)}$$</p><p>也就是说，有$c_i$类别中每个属性出现的概率即可求得整体的概率。</p><h4 id="离散属性任务"><a href="#离散属性任务" class="headerlink" title="离散属性任务"></a>离散属性任务</h4><p>对于离散属性的任务而言，可以直接用频率代替概率，即：</p><p>​                $$P(x_j|c_i)=\frac {|D_{c_i,x_j}|} {|D_{c_i}|}$$</p><p>由此整个预测所需要的条件已满足。</p><h4 id="连续属性任务"><a href="#连续属性任务" class="headerlink" title="连续属性任务"></a>连续属性任务</h4><p>显然，不可能对连续属性任务套用公式$P(x_j|c_i)=\frac {|D_{c_i,x_j}|} {|D_{c_i}|}$,因为$x_j$可以取任何值，无法通过频率替代概率。</p><p>由此，我们应该<strong>先假定该属性具有某种确定的概率分布形式，在基于训练样本对概率分布的参数进行估计</strong>，这里的估计方法，常用<strong>最大似然法</strong>。</p><blockquote><p>极大似然估计是建立在极大似然原理的基础上的一个统计方法，是概率论在统计学中的应用。极大似然估计提供了一种给定观察数据来评估模型参数的方法，即：“模型已定，参数未知”。通过若干次试验，观察其结果，利用试验结果得到某个参数值能够使样本出现的<strong>概率为最大</strong>，则称为极大似然估计。 </p></blockquote><p>以下通过一个例子说明极大似然法如何估计参数（该图来自于北大信科罗定生老师）：</p><p><img src="/image/2018-7-22-2.jpg" alt="贝叶斯"></p><p>于是，我们可以利用极大似然法来估算出<strong>连续型属性所遵循的分布</strong>，就可以利用<strong>属性在某值的概率密度替代离散属性中的概率</strong>。</p><p>例如，我们假设某个连续属性$x_j$遵循正态分布$N(\mu,\sigma^2)$,对$c_i$类别的所有样本的$x_j$属性值进行最大似然估计，结果得到$\mu = 1, \sigma =1 $，于是该属性遵循分布:</p><p>​                $$x_j分布：N(1,1) = \frac 1 {\sqrt{2\pi}} e^{-(\frac {(x-1)^2} 2)}$$</p><p>若某个样本x的属性$x_j=1$，便可以将该值带入上式算出概率密度。</p><p>由此整个预测所需要的条件已满足。</p><h3 id="拉普拉斯修正"><a href="#拉普拉斯修正" class="headerlink" title="拉普拉斯修正"></a>拉普拉斯修正</h3><p>在离散属性任务中，由于是<strong>直接将频率当成概率</strong>，所以若一个属性未出现，则计算出的概率始终0，为了避免这种错误，可以使用拉普拉斯修正使之平滑：</p><p>​                $$p(c_i) = \frac{|D_i|}{|D|} 变成 p(c_i) = \frac{|D_i|+1}{|D|+N}$$</p><p>​                 $$P(x_j|c_i)=\frac {|D_{c_i,x_j}|} {|D_{c_i}|}变成P(x_j|c_i)=\frac {|D_{c_i,x_j}|+1} {|D_{c_i}|+ N_j} $$</p><p>其中N为类别个数，$N_j$为第j个属性的可能取值的数目。</p><p>拉普拉斯修正实际上是假设了属性值和类别的均匀分布，但是当样本数目较大时，该影响会被消除。</p><h3 id="半朴素贝叶斯"><a href="#半朴素贝叶斯" class="headerlink" title="半朴素贝叶斯"></a>半朴素贝叶斯</h3><p>朴素贝叶斯的假设过于强势，在实际模型中有时并不满足，因为样本的很多属性可能存在关联关系，并不独立。例如一个病人有发烧，虚汗……等等多种症状，要判断他的病症类型，但是可能发烧会引起虚汗，这两个属性是相关的。</p><p>为了解决这个问题，科学家们又在朴素贝叶斯上引入了一些限制条件：<strong>允许一些属性之间拥有依赖关系</strong>，由此形成了半朴素贝叶斯。</p><p>根据不同模型允许存在的依赖关系的不同，有以下几种常用的半朴素贝叶斯模型。</p><p><img src="/image/2018-7-22-3.png" alt="贝叶斯"></p><p>上图中NB为朴素贝叶斯的依赖关系，可以看见该模型中不同属性$x_1,x_2,x_3……$相互独立。</p><h4 id="SPODE模型"><a href="#SPODE模型" class="headerlink" title="SPODE模型"></a>SPODE模型</h4><p>SPODE模型假设所有的属性都依赖一个父类属性——称为“超父”，在上图SPODE中，通过一些模型选择方法来来确定超父属性。</p><p>确定超父属性后，概率公式变为了：</p><p>​                $$P(c_i|x) \implies ^{正比于} P(c_i)*\prod_{j=1}^{n} {P(x_j|c_i,x_父)}$$</p><p>其中$x_父$即为超父属性。</p><h4 id="AODE模型"><a href="#AODE模型" class="headerlink" title="AODE模型"></a>AODE模型</h4><p>AODE模型同样假设所有的属性都依赖一个“超父”属性。但是AODE模型尝试将每个元素作为超父属性，建立SPODE模型，然后从中筛选较好的属性。将这些所有较好的属性<strong>集成</strong>起来作为最终的模型。</p><p>概率公式为：</p><p>​            $$P(c_i|x) \implies^{正比于} \sum_{所有被选中的x_j属性}P(c,x_j)*\prod_{j=1}^{n} {P(x_i|c_i,x_j)}$$</p><p>那么哪些属性被选中呢？要选择有足够数据支撑的数据，即：</p><p>​                $$|D_{x_j}|&gt;=m$$</p><p>其中m为确认的阈值。</p><h4 id="TAN模型"><a href="#TAN模型" class="headerlink" title="TAN模型"></a>TAN模型</h4><p>TAN模型也是假设每个属性只依赖<strong>一个</strong>属性，但是并不是统一的超父。相反，TAN将N个属性看成一个<strong>无向完全图</strong>，然后设定每条边的权重为两条边的相关性，计算公式如下：</p><p>​            $$I(x_i,x_j|y)=\sum_{c}P(x_i,x_j|c)*log{\frac {P(x_i,x_j|c)}{P(x_i|c)P(x_j|c)}}$$</p><p>观察该式可知：</p><ul><li>若$x_i,x_j$无关，即$P(x_i,x_j|c)=P(x_i|c)*P(x_j|c)$，则该式值为0</li><li>若$x_i,x_j$相关，则$P(x_i,x_j|c)&gt;P(x_i|c)*P(x_j|c)$，则该式为正值。</li></ul><p>建立无向完全图之后，通过<strong>最大生成树</strong>算法，挑选根变量，并将边设置为有向。</p><p>建立依赖图之后，就可以和AODE中一样计算概率，只不过每个属性有自己独特的父类而已，其余皆相同。</p><p>以上三个模型中$P(x_j|c_i,x_父)，P(c_i,x_j)$也可以通过<strong>将频率看做概率的方法</strong>计算得到：</p><p>​            $$P(c_i,x_j)=\frac {D_{c_i,c_j}+1} {|D|+N*N_i}$$</p><p>​            $$P(x_j|c_i,x_父)=\frac {|D_{c_i,x_j,x_父}|+1} {|D_{c_i,x_父}|+N_j}$$</p><h3 id="查看更多"><a href="#查看更多" class="headerlink" title="查看更多"></a>查看更多</h3><p>所有的文章都会在我的博客和我的知乎专栏同步进行更新，欢迎阅读</p><ul><li><a href="http://chrer.com/" target="_blank" rel="noopener">我的博客</a></li><li><a href="https://zhuanlan.zhihu.com/MLstudy" target="_blank" rel="noopener">知乎专栏</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;引入&quot;&gt;&lt;a href=&quot;#引入&quot; class=&quot;headerlink&quot; title=&quot;引入&quot;&gt;&lt;/a&gt;引入&lt;/h3&gt;&lt;p&gt;贝叶斯决策论是&lt;strong&gt;概率框架&lt;/strong&gt;下实施决策的基本方法，它基于概率和误判误差的最小化来进行判别，是一种&lt;strong&gt;
+      
+    
+    </summary>
+    
+      <category term="机器学习" scheme="https://braveryCHR.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="https://braveryCHR.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="贝叶斯" scheme="https://braveryCHR.github.io/tags/%E8%B4%9D%E5%8F%B6%E6%96%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>模型的选择、评估和优化-下</title>

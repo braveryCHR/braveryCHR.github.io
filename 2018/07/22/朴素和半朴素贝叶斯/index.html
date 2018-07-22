@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器学习,贝叶斯," />
 
 
 
@@ -95,17 +95,22 @@
 
 
 
-<meta name="description" content="我所受过的苦，终将照亮我前进的路">
-<meta name="keywords" content="计算机,编程,经济学">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陈浩然的博客">
-<meta property="og:url" content="https://braveryCHR.github.io/tags/模型评估/index.html">
+<meta name="description" content="引入贝叶斯决策论是概率框架下实施决策的基本方法，它基于概率和误判误差的最小化来进行判别，是一种分类问题的解法。  原理首先，将数据及其属性记为x，对于多分类任务，其可能的取值有N种，设为{$c_1,c_2,c_3…..c_N$}，统称为c。数据x的正确分类记为$c_x$。于是将算法的正确率记为： ​                $$P_{true}=\sum P(c_x|x)=P(c|x)​$$">
+<meta name="keywords" content="机器学习,贝叶斯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="朴素和半朴素贝叶斯">
+<meta property="og:url" content="https://braveryCHR.github.io/2018/07/22/朴素和半朴素贝叶斯/index.html">
 <meta property="og:site_name" content="陈浩然的博客">
-<meta property="og:description" content="我所受过的苦，终将照亮我前进的路">
+<meta property="og:description" content="引入贝叶斯决策论是概率框架下实施决策的基本方法，它基于概率和误判误差的最小化来进行判别，是一种分类问题的解法。  原理首先，将数据及其属性记为x，对于多分类任务，其可能的取值有N种，设为{$c_1,c_2,c_3…..c_N$}，统称为c。数据x的正确分类记为$c_x$。于是将算法的正确率记为： ​                $$P_{true}=\sum P(c_x|x)=P(c|x)​$$">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-22-1.png">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-22-2.jpg">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-22-3.png">
+<meta property="og:updated_time" content="2018-07-22T13:24:25.548Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陈浩然的博客">
-<meta name="twitter:description" content="我所受过的苦，终将照亮我前进的路">
+<meta name="twitter:title" content="朴素和半朴素贝叶斯">
+<meta name="twitter:description" content="引入贝叶斯决策论是概率框架下实施决策的基本方法，它基于概率和误判误差的最小化来进行判别，是一种分类问题的解法。  原理首先，将数据及其属性记为x，对于多分类任务，其可能的取值有N种，设为{$c_1,c_2,c_3…..c_N$}，统称为c。数据x的正确分类记为$c_x$。于是将算法的正确率记为： ​                $$P_{true}=\sum P(c_x|x)=P(c|x)​$$">
+<meta name="twitter:image" content="https://braverychr.github.io/image/2018-7-22-1.png">
 
 
 
@@ -135,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="https://braveryCHR.github.io/tags/模型评估/"/>
+  <link rel="canonical" href="https://braveryCHR.github.io/2018/07/22/朴素和半朴素贝叶斯/"/>
 
 
 
 
 
-  <title>标签: 模型评估 | 陈浩然的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>朴素和半朴素贝叶斯 | 陈浩然的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -160,7 +165,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -308,82 +313,343 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>模型评估<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://braveryCHR.github.io/2018/07/22/朴素和半朴素贝叶斯/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bravery">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/first.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浩然的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/07/21/模型的选择、评估和优化-下/" itemprop="url">
-              
-                <span itemprop="name">模型的选择、评估和优化-下</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">朴素和半朴素贝叶斯</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-21T15:04:36+08:00"
-              content="2018-07-21" >
-          07-21
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-22T21:19:17+08:00">
+                2018-07-22
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,069 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/21/模型的选择、评估和优化-上/" itemprop="url">
-              
-                <span itemprop="name">模型的选择、评估和优化-上</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-21T15:04:25+08:00"
-              content="2018-07-21" >
-          07-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><p>贝叶斯决策论是<strong>概率框架</strong>下实施决策的基本方法，它基于概率和误判误差的最小化来进行判别，是一种<strong>分类</strong>问题的解法。</p>
+<p><img src="/image/2018-7-22-1.png" alt="贝叶斯"></p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>首先，将数据及其属性记为x，对于多分类任务，其可能的取值有N种，设为{$c_1,c_2,c_3…..c_N$}，统称为c。数据x的正确分类记为$c_x$。于是将算法的正确率记为：</p>
+<p>​                $$P_{true}=\sum P(c_x|x)=P(c|x)​$$</p>
+<p>若算法可以对x进行正确分类，则记误判误差为0。若错误分类，误差记为1.</p>
+<p>于是，算法的总误差R可以表示为：</p>
+<p>​                $$R(c|x)=1-P(c|x)$$</p>
+<p>我们的目标是最小化$R(c|x)$，该目标可以转化为<strong>最大化P(c|x)</strong>。由逆概率公式可知：</p>
+<p>​                $$P(c|x)=\frac {P(c)*P(x|c)} {P(x)}$$</p>
+<p>成功利用逆概率公式将未知概率转化为我们已知的概率。</p>
+<p>由逆概率公式知，判定x为类别i(记为$c_i$)的概率为，:</p>
+<p>​                $$P(c_i|x)=\frac {P(c_i)*P(x|c_i)} {P(x)}$$        </p>
+<p><strong>我们只需要求出x为任意类别的概率，若最大概率取在类别j处，便可以判定x为类别$c_j$</strong>。</p>
+<p>由于在计算P($c_i$|x)时，需要计算的量有三个：P($c_i$),P(x|$c_i$),P(x)。</p>
+<ol>
+<li>由于判别任务是对于所有数据而言的，所以P(x)的概率对于任何样本都是一样的，<strong>可以忽略不计</strong>。</li>
+<li>P($c_i$)代表类别$c_i$在总体中所占的比例，可以利用$$p(c_i) = \frac{|D_i|}{|D|}$$计算得到，其中$D_i$代表类别为$c_i$的样本集合，D为总样本集合。</li>
+<li>难点出现在计算P(x|$c_i$)上面，该如何计算出现某一个类别$c_i$中出现数据x的概率。</li>
+</ol>
+<p>显然，由于x非常多，例如一个具有100个二值属性的x可以的取值有$2^{100}$种，在训练集中不可能取得x的所有取值的样本，所以我们必须要估计P(x|$c_i$)的值。</p>
+<h3 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h3><p>由于x实际上是由n个属性组成的，记为{$x_1,x_2……x_n$}。朴素贝叶斯方法有一个重要假设：</p>
+<blockquote>
+<p>对于已知的类别，假设其每个属性之间是独立的。</p>
+</blockquote>
+<p>若假设成立，便可以有公式：</p>
+<p>​                $$P(x|c_i) = \prod_{j=1}^{n} {P(x_j|c_i)}$$</p>
+<p>也就是说，有$c_i$类别中每个属性出现的概率即可求得整体的概率。</p>
+<h4 id="离散属性任务"><a href="#离散属性任务" class="headerlink" title="离散属性任务"></a>离散属性任务</h4><p>对于离散属性的任务而言，可以直接用频率代替概率，即：</p>
+<p>​                $$P(x_j|c_i)=\frac {|D_{c_i,x_j}|} {|D_{c_i}|}$$</p>
+<p>由此整个预测所需要的条件已满足。</p>
+<h4 id="连续属性任务"><a href="#连续属性任务" class="headerlink" title="连续属性任务"></a>连续属性任务</h4><p>显然，不可能对连续属性任务套用公式$P(x_j|c_i)=\frac {|D_{c_i,x_j}|} {|D_{c_i}|}$,因为$x_j$可以取任何值，无法通过频率替代概率。</p>
+<p>由此，我们应该<strong>先假定该属性具有某种确定的概率分布形式，在基于训练样本对概率分布的参数进行估计</strong>，这里的估计方法，常用<strong>最大似然法</strong>。</p>
+<blockquote>
+<p>极大似然估计是建立在极大似然原理的基础上的一个统计方法，是概率论在统计学中的应用。极大似然估计提供了一种给定观察数据来评估模型参数的方法，即：“模型已定，参数未知”。通过若干次试验，观察其结果，利用试验结果得到某个参数值能够使样本出现的<strong>概率为最大</strong>，则称为极大似然估计。 </p>
+</blockquote>
+<p>以下通过一个例子说明极大似然法如何估计参数（该图来自于北大信科罗定生老师）：</p>
+<p><img src="/image/2018-7-22-2.jpg" alt="贝叶斯"></p>
+<p>于是，我们可以利用极大似然法来估算出<strong>连续型属性所遵循的分布</strong>，就可以利用<strong>属性在某值的概率密度替代离散属性中的概率</strong>。</p>
+<p>例如，我们假设某个连续属性$x_j$遵循正态分布$N(\mu,\sigma^2)$,对$c_i$类别的所有样本的$x_j$属性值进行最大似然估计，结果得到$\mu = 1, \sigma =1 $，于是该属性遵循分布:</p>
+<p>​                $$x_j分布：N(1,1) = \frac 1 {\sqrt{2\pi}} e^{-(\frac {(x-1)^2} 2)}$$</p>
+<p>若某个样本x的属性$x_j=1$，便可以将该值带入上式算出概率密度。</p>
+<p>由此整个预测所需要的条件已满足。</p>
+<h3 id="拉普拉斯修正"><a href="#拉普拉斯修正" class="headerlink" title="拉普拉斯修正"></a>拉普拉斯修正</h3><p>在离散属性任务中，由于是<strong>直接将频率当成概率</strong>，所以若一个属性未出现，则计算出的概率始终0，为了避免这种错误，可以使用拉普拉斯修正使之平滑：</p>
+<p>​                $$p(c_i) = \frac{|D_i|}{|D|} 变成 p(c_i) = \frac{|D_i|+1}{|D|+N}$$</p>
+<p>​                 $$P(x_j|c_i)=\frac {|D_{c_i,x_j}|} {|D_{c_i}|}变成P(x_j|c_i)=\frac {|D_{c_i,x_j}|+1} {|D_{c_i}|+ N_j} $$</p>
+<p>其中N为类别个数，$N_j$为第j个属性的可能取值的数目。</p>
+<p>拉普拉斯修正实际上是假设了属性值和类别的均匀分布，但是当样本数目较大时，该影响会被消除。</p>
+<h3 id="半朴素贝叶斯"><a href="#半朴素贝叶斯" class="headerlink" title="半朴素贝叶斯"></a>半朴素贝叶斯</h3><p>朴素贝叶斯的假设过于强势，在实际模型中有时并不满足，因为样本的很多属性可能存在关联关系，并不独立。例如一个病人有发烧，虚汗……等等多种症状，要判断他的病症类型，但是可能发烧会引起虚汗，这两个属性是相关的。</p>
+<p>为了解决这个问题，科学家们又在朴素贝叶斯上引入了一些限制条件：<strong>允许一些属性之间拥有依赖关系</strong>，由此形成了半朴素贝叶斯。</p>
+<p>根据不同模型允许存在的依赖关系的不同，有以下几种常用的半朴素贝叶斯模型。</p>
+<p><img src="/image/2018-7-22-3.png" alt="贝叶斯"></p>
+<p>上图中NB为朴素贝叶斯的依赖关系，可以看见该模型中不同属性$x_1,x_2,x_3……$相互独立。</p>
+<h4 id="SPODE模型"><a href="#SPODE模型" class="headerlink" title="SPODE模型"></a>SPODE模型</h4><p>SPODE模型假设所有的属性都依赖一个父类属性——称为“超父”，在上图SPODE中，通过一些模型选择方法来来确定超父属性。</p>
+<p>确定超父属性后，概率公式变为了：</p>
+<p>​                $$P(c_i|x) \implies ^{正比于} P(c_i)*\prod_{j=1}^{n} {P(x_j|c_i,x_父)}$$</p>
+<p>其中$x_父$即为超父属性。</p>
+<h4 id="AODE模型"><a href="#AODE模型" class="headerlink" title="AODE模型"></a>AODE模型</h4><p>AODE模型同样假设所有的属性都依赖一个“超父”属性。但是AODE模型尝试将每个元素作为超父属性，建立SPODE模型，然后从中筛选较好的属性。将这些所有较好的属性<strong>集成</strong>起来作为最终的模型。</p>
+<p>概率公式为：</p>
+<p>​            $$P(c_i|x) \implies^{正比于} \sum_{所有被选中的x_j属性}P(c,x_j)*\prod_{j=1}^{n} {P(x_i|c_i,x_j)}$$</p>
+<p>那么哪些属性被选中呢？要选择有足够数据支撑的数据，即：</p>
+<p>​                $$|D_{x_j}|&gt;=m$$</p>
+<p>其中m为确认的阈值。</p>
+<h4 id="TAN模型"><a href="#TAN模型" class="headerlink" title="TAN模型"></a>TAN模型</h4><p>TAN模型也是假设每个属性只依赖<strong>一个</strong>属性，但是并不是统一的超父。相反，TAN将N个属性看成一个<strong>无向完全图</strong>，然后设定每条边的权重为两条边的相关性，计算公式如下：</p>
+<p>​            $$I(x_i,x_j|y)=\sum_{c}P(x_i,x_j|c)*log{\frac {P(x_i,x_j|c)}{P(x_i|c)P(x_j|c)}}$$</p>
+<p>观察该式可知：</p>
+<ul>
+<li>若$x_i,x_j$无关，即$P(x_i,x_j|c)=P(x_i|c)*P(x_j|c)$，则该式值为0</li>
+<li>若$x_i,x_j$相关，则$P(x_i,x_j|c)&gt;P(x_i|c)*P(x_j|c)$，则该式为正值。</li>
+</ul>
+<p>建立无向完全图之后，通过<strong>最大生成树</strong>算法，挑选根变量，并将边设置为有向。</p>
+<p>建立依赖图之后，就可以和AODE中一样计算概率，只不过每个属性有自己独特的父类而已，其余皆相同。</p>
+<p>以上三个模型中$P(x_j|c_i,x_父)，P(c_i,x_j)$也可以通过<strong>将频率看做概率的方法</strong>计算得到：</p>
+<p>​            $$P(c_i,x_j)=\frac {D_{c_i,c_j}+1} {|D|+N*N_i}$$</p>
+<p>​            $$P(x_j|c_i,x_父)=\frac {|D_{c_i,x_j,x_父}|+1} {|D_{c_i,x_父}|+N_j}$$</p>
+<h3 id="查看更多"><a href="#查看更多" class="headerlink" title="查看更多"></a>查看更多</h3><p>所有的文章都会在我的博客和我的知乎专栏同步进行更新，欢迎阅读</p>
+<ul>
+<li><a href="http://chrer.com/" target="_blank" rel="noopener">我的博客</a></li>
+<li><a href="https://zhuanlan.zhihu.com/MLstudy" target="_blank" rel="noopener">知乎专栏</a></li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+   <div>
+
+    ﻿<div>
+
+        
+-----------------------------------------------本文结束 谢谢阅读----------------------------------------------
+
+    
+</div>
+
+	</div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>生活不易，求打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="bravery 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/贝叶斯/" rel="tag"># 贝叶斯</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/21/模型的选择、评估和优化-下/" rel="next" title="模型的选择、评估和优化-下">
+                <i class="fa fa-chevron-left"></i> 模型的选择、评估和优化-下
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
 
-  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -391,6 +657,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzY1MS8xNDE4Mg=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -411,8 +686,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -499,6 +783,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引入"><span class="nav-number">1.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#朴素贝叶斯"><span class="nav-number">3.</span> <span class="nav-text">朴素贝叶斯</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#离散属性任务"><span class="nav-number">3.1.</span> <span class="nav-text">离散属性任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连续属性任务"><span class="nav-number">3.2.</span> <span class="nav-text">连续属性任务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拉普拉斯修正"><span class="nav-number">4.</span> <span class="nav-text">拉普拉斯修正</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#半朴素贝叶斯"><span class="nav-number">5.</span> <span class="nav-text">半朴素贝叶斯</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SPODE模型"><span class="nav-number">5.1.</span> <span class="nav-text">SPODE模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AODE模型"><span class="nav-number">5.2.</span> <span class="nav-text">AODE模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TAN模型"><span class="nav-number">5.3.</span> <span class="nav-text">TAN模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看更多"><span class="nav-number">6.</span> <span class="nav-text">查看更多</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -641,6 +941,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -669,6 +973,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
