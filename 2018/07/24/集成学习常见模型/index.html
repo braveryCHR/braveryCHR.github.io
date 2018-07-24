@@ -82,7 +82,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器学习,集成学习," />
 
 
 
@@ -95,17 +95,22 @@
 
 
 
-<meta name="description" content="我所受过的苦，终将照亮我前进的路">
-<meta name="keywords" content="计算机,编程,经济学">
-<meta property="og:type" content="website">
-<meta property="og:title" content="陈浩然的博客">
-<meta property="og:url" content="https://braveryCHR.github.io/tags/模型评估/index.html">
+<meta name="description" content="概念俗话说，“三个臭皮匠，顶个诸葛亮”，多个比较弱的人若能有一种方法集中利用他们的智慧，也可以达到比较好的效果，这就是集成学习的思想。  集成学习是指通过构建并结合多个学习器来完成学习任务的一种机器学习方法  其结构如下图所示：  根据个体学习器的特点，可以分为以下两类：  同类型（如全是神经网络）的个体学习器，又称基学习器，构成同质集成 不同类型的个体学习器，又称组件学习器，构成异质集成  一般">
+<meta name="keywords" content="机器学习,集成学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集成学习常见模型">
+<meta property="og:url" content="https://braveryCHR.github.io/2018/07/24/集成学习常见模型/index.html">
 <meta property="og:site_name" content="陈浩然的博客">
-<meta property="og:description" content="我所受过的苦，终将照亮我前进的路">
+<meta property="og:description" content="概念俗话说，“三个臭皮匠，顶个诸葛亮”，多个比较弱的人若能有一种方法集中利用他们的智慧，也可以达到比较好的效果，这就是集成学习的思想。  集成学习是指通过构建并结合多个学习器来完成学习任务的一种机器学习方法  其结构如下图所示：  根据个体学习器的特点，可以分为以下两类：  同类型（如全是神经网络）的个体学习器，又称基学习器，构成同质集成 不同类型的个体学习器，又称组件学习器，构成异质集成  一般">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-24-1.jpg">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-24-2.jpg">
+<meta property="og:image" content="https://braverychr.github.io/image/2018-7-24-3.png">
+<meta property="og:updated_time" content="2018-07-24T09:12:53.851Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="陈浩然的博客">
-<meta name="twitter:description" content="我所受过的苦，终将照亮我前进的路">
+<meta name="twitter:title" content="集成学习常见模型">
+<meta name="twitter:description" content="概念俗话说，“三个臭皮匠，顶个诸葛亮”，多个比较弱的人若能有一种方法集中利用他们的智慧，也可以达到比较好的效果，这就是集成学习的思想。  集成学习是指通过构建并结合多个学习器来完成学习任务的一种机器学习方法  其结构如下图所示：  根据个体学习器的特点，可以分为以下两类：  同类型（如全是神经网络）的个体学习器，又称基学习器，构成同质集成 不同类型的个体学习器，又称组件学习器，构成异质集成  一般">
+<meta name="twitter:image" content="https://braverychr.github.io/image/2018-7-24-1.jpg">
 
 
 
@@ -135,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="https://braveryCHR.github.io/tags/模型评估/"/>
+  <link rel="canonical" href="https://braveryCHR.github.io/2018/07/24/集成学习常见模型/"/>
 
 
 
 
 
-  <title>标签: 模型评估 | 陈浩然的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>集成学习常见模型 | 陈浩然的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -160,7 +165,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -308,82 +313,353 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>模型评估<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://braveryCHR.github.io/2018/07/24/集成学习常见模型/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bravery">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/image/first.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈浩然的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/07/21/模型的选择、评估和优化-下/" itemprop="url">
-              
-                <span itemprop="name">模型的选择、评估和优化-下</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">集成学习常见模型</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-21T15:04:36+08:00"
-              content="2018-07-21" >
-          07-21
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-24T17:08:32+08:00">
+                2018-07-24
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,011 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/21/模型的选择、评估和优化-上/" itemprop="url">
-              
-                <span itemprop="name">模型的选择、评估和优化-上</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-21T15:04:25+08:00"
-              content="2018-07-21" >
-          07-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>俗话说，“三个臭皮匠，顶个诸葛亮”，多个比较弱的人若能有一种方法集中利用他们的智慧，也可以达到比较好的效果，这就是<strong>集成学习</strong>的思想。</p>
+<blockquote>
+<p>集成学习是指通过构建并结合多个学习器来完成学习任务的一种机器学习方法</p>
+</blockquote>
+<p>其结构如下图所示：</p>
+<p><img src="/image/2018-7-24-1.jpg" alt="集成学习"></p>
+<p>根据个体学习器的特点，可以分为以下两类：</p>
+<ul>
+<li>同类型（如全是神经网络）的个体学习器，又称基学习器，构成<strong>同质集成</strong></li>
+<li>不同类型的个体学习器，又称组件学习器，构成<strong>异质集成</strong></li>
+</ul>
+<p>一般而言，个体学习器是所谓的<strong>弱学习器</strong>，即泛化能力略优于随机猜测的学习器。使用弱学习器进行集成学习已经可以获得足够好的泛化性能。当然也可以使用比较强的学习器。</p>
+<p>理想的个体学习器应该具有<strong>好而不同</strong>的特点，即：</p>
+<ul>
+<li>好：有一定的准确性</li>
+<li>不同：个体学习器之间应该具有差异</li>
+</ul>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>为什么使用多个弱学习器可以集成为一个强学习器呢？假设二分问题的最终结果是投票而来——即超过一半的弱学习器输出的结果为最终结果。即：</p>
+<p>$$H(x)=sign(\sum_{i=1}^{T} {h_i(x)})$$</p>
+<p>上式中H(x)为集成后的学习器，$h_i(x)$为第i个弱学习器，sign为理想激活函数。</p>
+<p>假设每个弱学习器的错误率为p，则集成的错误率为：(f(x)为真实的标记函数)</p>
+<p>$$P(H(x)!=f(x))=\sum_{k=0}^{\frac T2} {C_T^k (1-p)^k p^{T-k}}$$</p>
+<p>可以证明上式在p&lt;0.5的条件下，随着T的增大，函数值指数级趋向于0，由此就得到了更强的学习器。</p>
+<p>但是上式依赖于一个关键的条件：</p>
+<blockquote>
+<p>基学习器的误差是相互独立的。</p>
+</blockquote>
+<p>但是该条件在现实任务中是不成立的，因为这些基学习器都是围绕一个问题在同一个训练集上训练出来的。</p>
+<p>所以，<strong>如何寻找好而不同的个体学习器，是集成学习要研究的重点</strong>。</p>
+<h3 id="常见模型"><a href="#常见模型" class="headerlink" title="常见模型"></a>常见模型</h3><p>一般而言，要取得好而不同的学习器，有以下两大类：</p>
+<ul>
+<li>个体学习器之间存在着依赖关系，必须<strong>串行</strong>的生成个体学习器。典型方法例如AdsBoost。</li>
+<li>个体学习器之间不存在强依赖关系，可以<strong>并行</strong>的生成。典型方法例如bagging、随机森林。</li>
+</ul>
+<h4 id="AdaBoost"><a href="#AdaBoost" class="headerlink" title="AdaBoost"></a>AdaBoost</h4><p>AdaBoost是Boosting一族的代表算法。</p>
+<blockquote>
+<p>Boost的含义是增强，Boosting方法就是从弱学习算法出发，在前一个学习器的基础上反复学习，得到一系列弱分类器，然后组合弱分类器，得到一个强分类器。Boosting方法在学习过程中通过<strong>改变训练数据的权值分布</strong>，针对不同的数据分布调用弱学习算法得到一系列弱分类器。 </p>
+</blockquote>
+<p>根据定义可以知道：</p>
+<ul>
+<li><p>boost是迭代算法，是通过前一个弱学习器进行优化，改变训练数据分布，从而得到下一个弱学习器，最终将所有的学习器进行组合的算法。</p>
+</li>
+<li><p>boosting算法要求基学习器可以对特定的数据分布进行学习，一般以下两种方法:</p>
+<ul>
+<li>采用重赋值法，根据样本分布对不同仰恩数据进行赋值，这要求基学习器可以对带权数据进行学习</li>
+<li>采用重采样法：根据样本分布对原训练集进行重新采样以满足某个分布，进行下一轮次的学习。</li>
+</ul>
+</li>
+</ul>
+<p>AdaBoost最终的模型是对于基学习器的线性组合，即：</p>
+<p>$$H(x)=\sum_{t=1}^{T} {\alpha_t h_t(x)}$$</p>
+<p><img src="/image/2018-7-24-2.jpg" alt="集成学习"></p>
+<p>而该算法的目标是最小化指数损失函数：</p>
+<p>$$l_{exp}(H|D) = E_{x-D}(e^{-f(x)H(x)})$$</p>
+<p>其中，D为样本分布，f(x)为真实标记函数，H(x)为集成输出函数，E代表期望。</p>
+<p>可以证明，<strong>当损失函数最小时，分类错误率也将最小化</strong>。</p>
+<p>利用求导技巧最小化上式损失函数，可以得到该算法的具体流程：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 算法输入：</span></span><br><span class="line"><span class="comment"># 训练集M=&#123;(x1,y1),(x2,y2)......(xm,ym)&#125;</span></span><br><span class="line"><span class="comment"># 基学习算法B，训练轮数T</span></span><br><span class="line"><span class="comment"># 算法输出：</span></span><br><span class="line"><span class="comment"># 集成之后的学习器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ensembleLearning</span><span class="params">(M,B,T)</span>:</span></span><br><span class="line">    <span class="comment"># 初始分布D1，即为均匀分布</span></span><br><span class="line">    D1(x)=<span class="number">1</span>/m</span><br><span class="line">    <span class="comment"># 循环训练T轮</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">0</span>,T):</span><br><span class="line">        <span class="comment"># 训练得到学习器ht</span></span><br><span class="line">    	ht(x)=B(D,Dt)</span><br><span class="line">    	<span class="comment"># 计算该学习器的错误率</span></span><br><span class="line">    	pt = P(ht(x)!=f(x))</span><br><span class="line">    	<span class="comment"># 如果该学习器比随机性能还差，就停止算法</span></span><br><span class="line">    	<span class="keyword">if</span> pt &lt; <span class="number">0.5</span>:</span><br><span class="line">      		<span class="keyword">break</span></span><br><span class="line">    	<span class="comment"># 更新第t轮学习器的权重和下一轮的数据分布</span></span><br><span class="line">    	at = <span class="number">0.5</span> ln((<span class="number">1</span>-pt)/pt) </span><br><span class="line">    	Dt+<span class="number">1</span> = refresh(Dt)</span><br><span class="line"><span class="keyword">return</span> H(x)=sum(at*ht)</span><br></pre></td></tr></table></figure>
+<p>可见，迭代过程主要更新两个指标，分别是第t轮的学习器权重$\alpha_t$和下一轮的数据分布$D_{t+1}$，他们的更新公式都是由最小化损失函数得来的:</p>
+<p>$$\alpha_t = \frac 12 ln(\frac {1-p_t} {p_t})$$</p>
+<p>$$D_{t+1}(x)=D_t(x)<em>e^{-f(x)\alpha_t h_t(x)}</em>\frac {E_{x-D}[e^{-f(x)H_{t-1}(x)}]} {E_{x-D}[e^{-f(x)H_{t}(x)}]}$$</p>
+<p>其中$f(x)$真实标记函数，$D_t(x),D_{t+1}(x)$为第t、t+1轮的数据分布，$H_t(x)$为到第t轮为止的集成算法。</p>
+<p>AdaBoost主要关注减低偏差，而非方差，故可以通过很弱的弱学习器构建较强的集成学习器。</p>
+<h4 id="bagging"><a href="#bagging" class="headerlink" title="bagging"></a>bagging</h4><p>bagging属于无依赖型并行算法，它主要通过变换不同的数据集来得到不同的算法，然后通过简单投票法得到最后的结果。</p>
+<p>如何变换不同数据集呢？可以采用之前介绍过的自助采样法：</p>
+<blockquote>
+<p>自助法：假设有m个数据的数据集，每次有放回的从其中抽取一个样本，执行m次，最终大概有36.8%的数据未被抽取到，当做测试集，其余当做训练集。</p>
+<p>​            $$ \lim_{m \to +\infty } (1-\frac 1m)^m =  \frac 1 e = 0.386(该式子实际是e的定义式) $$</p>
+<ul>
+<li>优点：在数据集较小时用处较大，划分出的多个数据集有利于集成学习</li>
+<li>缺点：改变了原数据样本的分布，会引入偏差</li>
+</ul>
+</blockquote>
+<p>可以将上述方法重复T次，得到T个不同的数据集，便可以训练得到T个不同的弱学习器。</p>
+<p>然后这多个弱学习器，通过简单投票，票多的结果胜出的方法，集成得到最终的强学习器。</p>
+<p>bagging算法主要是降低方差，故它在一些易受到扰动的基学习器上使用效果更佳明显——例如神经网络，非剪枝决策树等。</p>
+<h4 id="随机森林"><a href="#随机森林" class="headerlink" title="随机森林"></a>随机森林</h4><p>和bagging不同，随机森林采用另一种方法来达到<strong>好而不同</strong>的效果。随机森林是在<a href="http://chrer.com/2018/07/18/%E5%86%B3%E7%AD%96%E6%A0%91/" target="_blank" rel="noopener">决策树</a>的基础上进行的。</p>
+<ul>
+<li>在普通决策树的构建过程中，节点的划分是在剩余属性集合中找一个最优的属性集合——信息增益最大</li>
+<li>在随机森林的构建过程中，现在属性集合中先随机选出一个容量为$k(推荐为log(d)，其中d为属性总数)$的属性子集，在从中找到最好的分类属性。</li>
+</ul>
+<p>显然，k=d时，退化为普通决策树，k=1时，相当于随机划分。</p>
+<p>随机森林在很多现实任务中都表现出了强大的泛化能力。</p>
+<p><img src="/image/2018-7-24-3.png" alt="集成学习"></p>
+<h3 id="查看更多"><a href="#查看更多" class="headerlink" title="查看更多"></a>查看更多</h3><p>所有的文章都会在我的博客和我的知乎专栏同步进行更新，欢迎阅读</p>
+<ul>
+<li><a href="http://chrer.com/" target="_blank" rel="noopener">我的博客</a></li>
+<li><a href="https://zhuanlan.zhihu.com/MLstudy" target="_blank" rel="noopener">知乎专栏</a></li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+   <div>
+
+    ﻿<div>
+
+        
+-----------------------------------------------本文结束 谢谢阅读----------------------------------------------
+
+    
+</div>
+
+	</div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>生活不易，求打赏</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="bravery 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/集成学习/" rel="tag"># 集成学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/22/朴素和半朴素贝叶斯/" rel="next" title="朴素和半朴素贝叶斯">
+                <i class="fa fa-chevron-left"></i> 朴素和半朴素贝叶斯
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
 
-  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -391,6 +667,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzY1MS8xNDE4Mg=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -411,8 +696,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -499,6 +793,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见模型"><span class="nav-number">3.</span> <span class="nav-text">常见模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AdaBoost"><span class="nav-number">3.1.</span> <span class="nav-text">AdaBoost</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bagging"><span class="nav-number">3.2.</span> <span class="nav-text">bagging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机森林"><span class="nav-number">3.3.</span> <span class="nav-text">随机森林</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看更多"><span class="nav-number">4.</span> <span class="nav-text">查看更多</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -647,6 +957,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -675,6 +989,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
